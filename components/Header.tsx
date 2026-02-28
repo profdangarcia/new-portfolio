@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import generalData from "@/lib/pageData/general";
 import type { Locale } from "@/app/actions/locale";
-import LanguageHandler from "./LanguageHandler";
 
 function isInViewport(el: Element | null): boolean {
   if (!el) return false;
@@ -117,9 +116,6 @@ export default function Header({ locale }: HeaderProps) {
               </ul>
             )}
             <div className="flex items-center gap-4">
-              <div className="flex h-10 items-center justify-end bg-[#f7f7f7] px-2 md:bg-transparent md:px-0">
-              <LanguageHandler locale={locale} />
-            </div>
               <button
                 type="button"
                 className="text-[#666] md:hidden"
