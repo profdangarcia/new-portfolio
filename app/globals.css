@@ -117,6 +117,15 @@ button {
   100% { transform: scale(1, 1) translateY(0); }
 }
 
+/* Coffee loader – cup fill animation (first visit) */
+@keyframes coffee-fill {
+  0% { height: 0%; }
+  100% { height: 75%; }
+}
+.coffee-fill {
+  animation: coffee-fill 2.5s ease-in-out forwards;
+}
+
 #post-content {
   line-height: 1.75rem;
 }

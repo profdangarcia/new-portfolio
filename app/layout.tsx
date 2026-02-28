@@ -4,6 +4,7 @@ import { getLocaleCookie } from "@/app/actions/locale";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LanguageHandler from "@/components/LanguageHandler";
+import CoffeeLoading from "@/components/CoffeeLoading";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -57,6 +58,7 @@ export default async function RootLayout({
       <body
         className={`${poppins.variable} ${montserrat.variable} ${sixCaps.variable} antialiased`}
       >
+        <CoffeeLoading />
         <LanguageHandler locale={locale} />
         <Header locale={locale} />
         <main className="min-h-screen">{children}</main>
