@@ -1,8 +1,7 @@
 <!--
-*** Obrigado por estar vendo o nosso README. Se você tiver alguma sugestão
-*** que possa melhorá-lo ainda mais dê um fork no repositório e crie uma Pull
-*** Request ou abra uma Issue com a tag "sugestão".
-*** Obrigado novamente! Agora vamos rodar esse projeto incrível :D
+*** Thanks for checking out our README. If you have any suggestions to improve it,
+*** feel free to fork the repo and open a Pull Request or an Issue with the "suggestion" tag.
+*** Thanks again! Now let's run this awesome project :D
 -->
 
 <!-- PROJECT LOGO -->
@@ -15,62 +14,62 @@
   <h3 align="center">Dan Garcia - Portfolio Project Repo</h3>
 </p>
 
-Este é o repositório do meu site de portfolio. É open source… fique à vontade para se inspirar.
+This is my portfolio website repository. It's open source—feel free to grab some ideas.
 
-## 🏃‍♂️ Rodar localmente
+## 🏃‍♂️ Run locally
 
-Três passos:
+Three simple steps:
 
-1. O projeto usa **pnpm** como gerenciador de pacotes. Recomenda-se ter Node.js 20+ e instalar o pnpm:
+1. This project uses **pnpm** as the package manager. Node.js 20+ is recommended. Install pnpm:
 
 ```bash
 npm install -g pnpm
-# ou
+# or
 corepack enable && corepack prepare pnpm@latest --activate
 ```
 
-2. Instale as dependências:
+2. Install dependencies:
 
 ```bash
 pnpm install
 ```
 
-3. Suba o servidor de desenvolvimento:
+3. Start the development server:
 
 ```bash
 pnpm dev
 ```
 
-Abra [http://localhost:3000](http://localhost:3000) no navegador para ver o resultado.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-## 🔥 Feito com
+## 🔥 Built with
 
-- [Next.js](https://nextjs.org/) (App Router) – Framework React com SSR, SSG e recursos prontos para produção;
-- [TypeScript](https://www.typescriptlang.org/) – Tipagem estática em cima do JavaScript;
-- [Tailwind CSS](https://tailwindcss.com/) – Estilização utilitária e responsiva;
-- [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) – Formulários e validação;
-- [Lucide React](https://lucide.dev/) – Ícones em componentes;
-- [Utterances](https://utteranc.es/) – Comentários no blog via GitHub Issues;
-- [gray-matter](https://github.com/jonschlinkert/gray-matter) + [marked](https://marked.js.org/) – Posts em Markdown.
+- [Next.js](https://nextjs.org/) (App Router) – React framework with SSR, SSG, and production-ready features;
+- [TypeScript](https://www.typescriptlang.org/) – Static typing for JavaScript;
+- [Tailwind CSS](https://tailwindcss.com/) – Utility-first, responsive styling;
+- [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) – Forms and validation;
+- [Lucide React](https://lucide.dev/) – Icon components;
+- [Utterances](https://utteranc.es/) – Blog comments via GitHub Issues;
+- [gray-matter](https://github.com/jonschlinkert/gray-matter) + [marked](https://marked.js.org/) – Markdown posts.
 
-## 🧁 Estilo de código
+## 🧁 Code style
 
-- [ESLint](https://eslint.org/) – Lint para JavaScript/TypeScript e JSX;
-- [eslint-config-next](https://nextjs.org/docs/app/building-your-application/configuring/eslint) – Regras recomendadas para Next.js.
+- [ESLint](https://eslint.org/) – Linting for JavaScript/TypeScript and JSX;
+- [eslint-config-next](https://nextjs.org/docs/app/building-your-application/configuring/eslint) – Recommended rules for Next.js.
 
-## 🥳 Contribuição
+## 🥳 Contributing
 
-Contribuições tornam a comunidade open source um lugar melhor para aprender e criar. Qualquer contribuição será **muito apreciada**.
+Contributions are what make the open source community a great place to learn and create. Any contribution you make is **greatly appreciated**.
 
-1. Dê fork no projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/awesome-feature`)
-3. Adicione suas alterações (`git add .`)
-4. Faça o commit (`git commit -m 'feat: dando um café pra você'`)
-5. Envie a branch (`git push origin feature/awesome-feature`)
-6. Abra um Pull Request
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/awesome-feature`)
+3. Stage your changes (`git add .`)
+4. Commit your changes (`git commit -m 'feat: add something awesome'`)
+5. Push to the branch (`git push origin feature/awesome-feature`)
+6. Open a Pull Request
 
 ## Deploy (Vercel)
 
-O deploy pode ser feito na [Vercel](https://vercel.com/new). Conecte o repositório e use as configurações padrão para Next.js.
+You can deploy on [Vercel](https://vercel.com/new). Connect the repository and use the default Next.js settings.
 
-Consulte a [documentação de deploy do Next.js](https://nextjs.org/docs/app/building-your-application/deploying) para mais detalhes.
+See the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
