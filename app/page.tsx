@@ -1,21 +1,32 @@
-import Link from "next/link";
+import { getLocaleCookie } from "@/app/actions/locale";
+import homeData from "@/lib/pageData/home";
+import Banner from "@/components/Banner";
+import About from "@/components/About";
+import TechSection from "@/components/TechSection";
+import PortfolioSection from "@/components/PortfolioSection";
+import Contact from "@/components/Contact";
 
-export default function Home() {
+export default async function Home() {
+  const locale = await getLocaleCookie();
+  const data = homeData[locale];
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-8 px-4 py-24">
-      <h1 className="font-display text-4xl font-bold tracking-widest text-[var(--text-title)] md:text-5xl">
-        DAN GARCIA
-      </h1>
-      <p className="max-w-lg text-center text-[var(--text)]">
-        Portfolio em construção. Em breve: Banner, Sobre, Techs, Portfólio e
-        Contato.
-      </p>
-      <Link
-        href="/blog"
-        className="rounded-full bg-[var(--text-title)] px-6 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
-      >
-        Blog
-      </Link>
-    </div>
+    <>
+      <Banner lines={[...data.banner]} />
+      <About title={data.about.title} messages={[...data.about.messages]} />
+      <TechSection techs={[...data.techs]} />
+      <PortfolioSection
+        title={data.portfolio.title}
+        description={data.portfolio.description}
+        buttonText={data.portfolio.buttonText}
+        projects={[...data.portfolio.projects]}
+        tip={data.portfolio.tip}
+      />
+      <Contact
+        title={data.contact.title}
+        description={data.contact.description}
+        form={data.contact.form}
+      />
+    </>
   );
 }
