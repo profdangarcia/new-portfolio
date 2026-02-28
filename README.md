@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<!--
+*** Obrigado por estar vendo o nosso README. Se você tiver alguma sugestão
+*** que possa melhorá-lo ainda mais dê um fork no repositório e crie uma Pull
+*** Request ou abra uma Issue com a tag "sugestão".
+*** Obrigado novamente! Agora vamos rodar esse projeto incrível :D
+-->
 
-## Getting Started
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://dangarcia-devel.vercel.app">
+    <img src="https://dangarcia-devel.vercel.app/favicon.ico" alt="Logo" width="120">
+  </a>
 
-First, run the development server:
+  <h3 align="center">Dan Garcia - Portfolio Project Repo</h3>
+</p>
+
+Este é o repositório do meu site de portfolio. É open source… fique à vontade para se inspirar.
+
+## 🏃‍♂️ Rodar localmente
+
+Três passos:
+
+1. O projeto usa **pnpm** como gerenciador de pacotes. Recomenda-se ter Node.js 20+ e instalar o pnpm:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install -g pnpm
+# ou
+corepack enable && corepack prepare pnpm@latest --activate
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instale as dependências:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Suba o servidor de desenvolvimento:
 
-## Learn More
+```bash
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Abra [http://localhost:3000](http://localhost:3000) no navegador para ver o resultado.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔥 Feito com
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [Next.js](https://nextjs.org/) (App Router) – Framework React com SSR, SSG e recursos prontos para produção;
+- [TypeScript](https://www.typescriptlang.org/) – Tipagem estática em cima do JavaScript;
+- [Tailwind CSS](https://tailwindcss.com/) – Estilização utilitária e responsiva;
+- [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) – Formulários e validação;
+- [Lucide React](https://lucide.dev/) – Ícones em componentes;
+- [Utterances](https://utteranc.es/) – Comentários no blog via GitHub Issues;
+- [gray-matter](https://github.com/jonschlinkert/gray-matter) + [marked](https://marked.js.org/) – Posts em Markdown.
 
-## Deploy on Vercel
+## 🧁 Estilo de código
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [ESLint](https://eslint.org/) – Lint para JavaScript/TypeScript e JSX;
+- [eslint-config-next](https://nextjs.org/docs/app/building-your-application/configuring/eslint) – Regras recomendadas para Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🥳 Contribuição
+
+Contribuições tornam a comunidade open source um lugar melhor para aprender e criar. Qualquer contribuição será **muito apreciada**.
+
+1. Dê fork no projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/awesome-feature`)
+3. Adicione suas alterações (`git add .`)
+4. Faça o commit (`git commit -m 'feat: dando um café pra você'`)
+5. Envie a branch (`git push origin feature/awesome-feature`)
+6. Abra um Pull Request
+
+## Deploy (Vercel)
+
+O deploy pode ser feito na [Vercel](https://vercel.com/new). Conecte o repositório e use as configurações padrão para Next.js.
+
+Consulte a [documentação de deploy do Next.js](https://nextjs.org/docs/app/building-your-application/deploying) para mais detalhes.
