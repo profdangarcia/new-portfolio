@@ -70,20 +70,55 @@ button {
   position: relative;
 }
 
-/* TipBox: painel deslizante (variáveis --tip-bottom e --tip-right definidas no componente) */
+/* TipBox: painel deslizante. No antigo fica fora do Wrapper, filho direto da seção #portfolio,
+   para se posicionar em relação à seção inteira. Variáveis --tip-bottom e --tip-right no componente. */
 .tip-box {
-  bottom: calc(var(--tip-bottom, -200) * 0.0625rem);
-  right: calc(50vw - 9.375rem);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 9;
+  bottom: calc(var(--tip-bottom, -200) * 1px);
+  right: calc(50vw - 150px);
+  width: 300px;
+  height: 250px;
+  padding: 10px 10px 0;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 12px -10px 10px 0 rgba(0, 0, 0, 0.15);
+  transition: bottom 0.5s ease-in-out, right 0.5s ease-in-out;
 }
 @media (min-width: 48rem) {
   .tip-box {
-    right: calc(var(--tip-right, -250) * 0.0625rem);
-    bottom: auto;
-    left: auto;
+    right: calc(var(--tip-right, -250) * 1px);
+    bottom: 0;
     top: 0;
-    margin-top: auto;
-    margin-bottom: auto;
+    left: auto;
+    margin: auto 0;
+    width: 300px;
+    height: 250px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px 0 0 4px;
+    padding: 10px 10px 10px 0;
   }
+}
+
+/* Animação bouncing (igual ao my-portfolio) */
+.tip-box-bouncing {
+  animation: tipbox-bounce 2s ease infinite;
+}
+.tip-box-bouncing-short {
+  --tipbox-high: -5px;
+  --tipbox-low: -2px;
+}
+@keyframes tipbox-bounce {
+  0% { transform: scale(1, 1) translateY(0); }
+  10% { transform: scale(1.1, 0.9) translateY(0); }
+  30% { transform: scale(0.9, 1.1) translateY(var(--tipbox-high, -5px)); }
+  50% { transform: scale(1, 1) translateY(0); }
+  57% { transform: scale(1, 1) translateY(var(--tipbox-low, -2px)); }
+  64% { transform: scale(1, 1) translateY(0); }
+  100% { transform: scale(1, 1) translateY(0); }
 }
 
 /* Conteúdo do post (markdown renderizado) */
