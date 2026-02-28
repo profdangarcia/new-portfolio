@@ -53,9 +53,61 @@ body {
   padding-right: 1rem;
 }
 
-@media (min-width: 768px) {
-  .container-portfolio {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+/* Conteúdo do post (markdown renderizado) */
+#post-content {
+  line-height: 1.75;
+}
+#post-content h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-six-caps), sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: 1.25rem;
+}
+#post-content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+#post-content p {
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+#post-content a {
+  color: var(--text-title);
+  text-decoration: underline;
+}
+#post-content a:hover {
+  opacity: 0.85;
+}
+#post-content ul, #post-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  color: var(--text);
+}
+#post-content img {
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+#post-content pre, #post-content code {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+}
+#post-content pre {
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+#post-content pre code {
+  padding: 0;
+  background: none;
+}
+@media (prefers-color-scheme: dark) {
+  #post-content pre,
+  #post-content code {
+    background: rgba(255, 255, 255, 0.08);
   }
 }
