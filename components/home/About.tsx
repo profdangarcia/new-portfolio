@@ -8,15 +8,6 @@ interface AboutProps {
   messages: readonly string[];
 }
 
-/**
- * Replicado fielmente do my-portfolio:
- * - Container: width 100%, bg #fff, padding-top 60px, Montserrat
- * - Content: flex column → row em 768px, align-items center, justify-content flex-start
- * - DevPicture: 100% max-width 400px; em 1024px width 700px, margin-right 20px, animação translateX(-1000px) → 0
- * - AboutContainer: padding 30px 15px, opacidade 0 → 1
- * - AboutTitle: font-weight 500, 23px → 32px (1024px), margin-bottom 30px, color #333
- * - AboutText: margin-bottom 15px, color #777, 13px → 16px (1024px), line-height 24px, max-width 700px
- */
 export default function About({ title, messages }: AboutProps) {
   const [animate, setAnimate] = useState(false);
 
@@ -53,7 +44,6 @@ export default function About({ title, messages }: AboutProps) {
           />
         </div>
 
-        {/* AboutContainer: padding 30px 15px, opacidade */}
         <div
           className="px-[0.9375rem] py-[1.875rem] transition-opacity duration-1000 ease-in"
           style={{ opacity: animate ? 1 : 0 }}

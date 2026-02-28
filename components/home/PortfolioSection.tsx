@@ -20,10 +20,6 @@ interface PortfolioSectionProps {
   tip?: { title: string; message: string; url: string };
 }
 
-/**
- * Replicado do my-portfolio: fundo branco, título/descrição centralizados (50px top, 20px entre título e desc),
- * grid com justify-around / flex-wrap, padding-bottom 50px. Cards 420x250px, margin 25px, fundo #f5f5f5.
- */
 export default function PortfolioSection({
   title,
   description,

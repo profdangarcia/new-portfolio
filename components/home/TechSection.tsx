@@ -22,10 +22,6 @@ const iconMap = {
   next: Layers,
 } as const;
 
-/**
- * Replicado do my-portfolio: fundo cinza claro (#f5f5f5), texto escuro (#333 / #777),
- * padding 45px 0, flex row em 1024px com space-between, itens altura 180px, título 13px/15px, descrição 13px/15px.
- */
 export default function TechSection({ techs }: TechSectionProps) {
   return (
     <section className="bg-[#f5f5f5] py-[2.8125rem]">

@@ -14,10 +14,6 @@ interface TipBoxProps {
   data: TipBoxData;
 }
 
-/**
- * Replicado do my-portfolio: painel 300x250px, animação bottom/right 0.5s ease-in-out,
- * setas com bouncing short, TipTop rotacionado -90deg no desktop, cores #f5f5f5 / #333 / #777 / #fff.
- */
 export default function TipBox({ data }: TipBoxProps) {
   const [visible, setVisible] = useState(false);
 
@@ -33,7 +29,6 @@ export default function TipBox({ data }: TipBoxProps) {
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
     >
-      {/* TipTop: setas + título, no desktop rotacionado -90deg */}
       <div
         className="flex h-[3.125rem] shrink-0 cursor-pointer items-center justify-center md:ml-[-5.3125rem] md:mr-[-4.0625rem] md:rotate-[-90deg]"
         onClick={() => setVisible((v) => !v)}
@@ -54,7 +49,6 @@ export default function TipBox({ data }: TipBoxProps) {
         </h3>
       </div>
 
-      {/* TipBody: link com ícone GitHub e mensagem */}
       <Link
         href={data.url}
         target="_blank"

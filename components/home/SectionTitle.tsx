@@ -1,7 +1,6 @@
 interface SectionTitleProps {
   title: string;
   description?: string;
-  /** Usar cores fixas #333 / #777 (ex.: seção Portfolio em fundo claro) */
   variant?: "default" | "light";
 }
 

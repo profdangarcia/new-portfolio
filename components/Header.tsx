@@ -7,7 +7,6 @@ import { Menu } from "lucide-react";
 import generalData from "@/lib/pageData/general";
 import type { Locale } from "@/app/actions/locale";
 
-/** Igual ao antigo: foco quando o topo do elemento está em ou acima de elementHeight/2 do topo da viewport */
 function isInViewport(el: Element | null): boolean {
   if (!el) return false;
   const rect = el.getBoundingClientRect();
@@ -19,7 +18,6 @@ function isInViewport(el: Element | null): boolean {
   );
 }
 
-/** Antigo usava 1024px (medium), não 768px */
 function checkIsMobile(): boolean {
   if (typeof window === "undefined") return true;
   return window.innerWidth < 1024;
@@ -77,12 +75,10 @@ export default function Header({ locale }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHome, links]);
 
-  /** Sincroniza visibilidade ao mudar de rota: fora da home o header fica sempre visível */
   useEffect(() => {
     if (!isHome) setIsVisible(true);
   }, [isHome]);
 
-  /** Na rota /blog (ou /blog/...) o link Blog fica em destaque */
   function isLinkInFocus(link: { url: string; name: string; id?: string }): boolean {
     if (isHome) {
       return link.id != null && focusedElement === link.id;
@@ -111,7 +107,6 @@ export default function Header({ locale }: HeaderProps) {
     >
       <div className="container-portfolio">
         <nav>
-          {/* VisibleContent: flex space-between, height 92px */}
           <div className="flex h-[5.75rem] items-center justify-between">
             <Link
               href="/"
@@ -165,7 +160,6 @@ export default function Header({ locale }: HeaderProps) {
             </button>
           </div>
 
-          {/* MobileNavigation: opacity 0/1, transition 0.2s ease-in */}
           {isMobile && (
             <div
               className="flex items-center justify-center lg:hidden"

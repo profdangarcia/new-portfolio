@@ -59,7 +59,6 @@ button {
   outline: none;
 }
 
-/* Wrapper do portfolio (max-width 73.75rem, centralizado) */
 .container-portfolio {
   width: 100%;
   max-width: var(--wrapper-max);
@@ -70,8 +69,6 @@ button {
   position: relative;
 }
 
-/* TipBox: painel deslizante. No antigo fica fora do Wrapper, filho direto da seção #portfolio,
-   para se posicionar em relação à seção inteira. Variáveis --tip-bottom e --tip-right no componente. */
 .tip-box {
   position: absolute;
   display: flex;
@@ -103,7 +100,6 @@ button {
   }
 }
 
-/* Animação bouncing (igual ao my-portfolio) */
 .tip-box-bouncing {
   animation: tipbox-bounce 2s ease infinite;
 }
@@ -121,7 +117,6 @@ button {
   100% { transform: scale(1, 1) translateY(0); }
 }
 
-/* Conteúdo do post (markdown renderizado) */
 #post-content {
   line-height: 1.75rem;
 }
