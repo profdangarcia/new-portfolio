@@ -1,12 +1,12 @@
-"use client";
-
-import { useLanguage } from "@/lib/i18n/LanguageContext";
 import generalData from "@/lib/pageData/general";
 import SocialLinks from "./SocialLinks";
 
-export default function Footer() {
-  const { language } = useLanguage();
-  const { message } = generalData[language].footer;
+interface FooterProps {
+  locale: "pt" | "en";
+}
+
+export default function Footer({ locale }: FooterProps) {
+  const { message } = generalData[locale].footer;
 
   return (
     <footer id="footer" className="bg-black py-14">

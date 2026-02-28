@@ -1,18 +1,29 @@
 "use client";
 
 import Image from "next/image";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useRouter } from "next/navigation";
+import type { Locale } from "@/app/actions/locale";
+import { setLocaleCookie } from "@/app/actions/locale";
 
-export default function LanguageHandler() {
-  const { language, setLanguage } = useLanguage();
+interface LanguageHandlerProps {
+  locale: Locale;
+}
+
+export default function LanguageHandler({ locale }: LanguageHandlerProps) {
+  const router = useRouter();
+
+  async function handleSetLocale(newLocale: Locale) {
+    await setLocaleCookie(newLocale);
+    router.refresh();
+  }
 
   return (
     <div className="flex items-center gap-1">
       <button
         type="button"
-        onClick={() => setLanguage("en")}
+        onClick={() => handleSetLocale("en")}
         className="rounded p-1 transition-opacity hover:opacity-80 aria-pressed:ring-2 aria-pressed:ring-white"
-        aria-pressed={language === "en"}
+        aria-pressed={locale === "en"}
         aria-label="English"
       >
         <Image
@@ -20,14 +31,14 @@ export default function LanguageHandler() {
           alt="English"
           width={28}
           height={20}
-          className={`h-5 w-7 object-contain ${language !== "en" ? "opacity-50" : ""}`}
+          className={`h-5 w-7 object-contain ${locale !== "en" ? "opacity-50" : ""}`}
         />
       </button>
       <button
         type="button"
-        onClick={() => setLanguage("pt")}
+        onClick={() => handleSetLocale("pt")}
         className="rounded p-1 transition-opacity hover:opacity-80 aria-pressed:ring-2 aria-pressed:ring-white"
-        aria-pressed={language === "pt"}
+        aria-pressed={locale === "pt"}
         aria-label="Português"
       >
         <Image
@@ -35,7 +46,7 @@ export default function LanguageHandler() {
           alt="Português BR"
           width={28}
           height={20}
-          className={`h-5 w-7 object-contain ${language !== "pt" ? "opacity-50" : ""}`}
+          className={`h-5 w-7 object-contain ${locale !== "pt" ? "opacity-50" : ""}`}
         />
       </button>
     </div>

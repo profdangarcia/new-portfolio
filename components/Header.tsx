@@ -4,8 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
 import generalData from "@/lib/pageData/general";
+import type { Locale } from "@/app/actions/locale";
 import LanguageHandler from "./LanguageHandler";
 
 function isInViewport(el: Element | null): boolean {
@@ -22,11 +22,14 @@ function checkIsMobile(): boolean {
   return window.innerWidth < 768;
 }
 
-export default function Header() {
+interface HeaderProps {
+  locale: Locale;
+}
+
+export default function Header({ locale }: HeaderProps) {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const { language } = useLanguage();
-  const { links } = generalData[language].header;
+  const { links } = generalData[locale].header;
 
   const [isVisible, setIsVisible] = useState(!isHome);
   const [showNav, setShowNav] = useState(false);
@@ -52,9 +55,10 @@ export default function Header() {
       let focused = "";
       if (isHome) {
         for (const link of links) {
-          if (link.id) {
-            const element = document.querySelector(link.id);
-            if (element && isInViewport(element)) focused = link.id;
+          const id = "id" in link ? link.id : null;
+          if (id) {
+            const element = document.querySelector(id);
+            if (element && isInViewport(element)) focused = id;
           }
         }
       }
@@ -63,7 +67,7 @@ export default function Header() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isHome, isVisible, focusedElement, links]);
+  }, [isHome, isVisible, focusedElement, locale]);
 
   useEffect(() => {
     setIsMobile(checkIsMobile());
@@ -95,7 +99,7 @@ export default function Header() {
                     <Link
                       href={link.url}
                       className={`text-sm font-medium text-white transition-opacity hover:opacity-80 ${
-                        focusedElement === link.id ? "underline underline-offset-4" : ""
+                        focusedElement === ("id" in link ? link.id : "") ? "underline underline-offset-4" : ""
                       }`}
                     >
                       {link.name}
@@ -105,7 +109,7 @@ export default function Header() {
               </ul>
             )}
             <div className="flex items-center gap-4">
-              <LanguageHandler />
+              <LanguageHandler locale={locale} />
               <button
                 type="button"
                 className="text-2xl text-white md:hidden"
