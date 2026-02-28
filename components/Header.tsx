@@ -78,28 +78,36 @@ export default function Header({ locale }: HeaderProps) {
 
   return (
     <header
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-        isVisible ? "translate-y-0 bg-black/95 shadow-lg" : "-translate-y-full"
-      } ${!isHome ? "translate-y-0 bg-black/95" : ""}`}
+      className={`left-0 right-0 top-0 z-10 min-h-[5.75rem] transition-all duration-500 ease-in-out ${
+        pathname === "/" ? "fixed" : "relative"
+      } ${
+        isVisible ? "translate-y-0" : pathname === "/" ? "-translate-y-[6.375rem]" : "translate-y-0"
+      } bg-white shadow-[_-0.3125rem_0.625rem_0.75rem_-0.625rem_rgba(201,201,201,0.67)]`}
+      style={{
+        maxHeight: showNav ? "31.25rem" : "5.75rem",
+        overflow: "hidden",
+      }}
       onBlur={closeNavigation}
     >
       <div className="container-portfolio">
-        <nav className="flex min-h-[60px] items-center justify-between py-3">
-          <div className="flex flex-1 items-center justify-between md:flex-initial">
+        <nav className="flex h-[5.75rem] items-center justify-between">
+          <div className="flex flex-1 items-center justify-between md:flex-initial md:min-w-[6.875rem]">
             <Link
               href="/"
-              className="font-display text-xl font-bold tracking-widest text-white md:text-2xl"
+              className="font-display text-[2.25rem] font-normal text-black transition-all duration-200 hover:text-[2.375rem] md:text-[3rem] md:hover:text-[3.125rem]"
             >
               DAN GARCIA
             </Link>
             {!isMobile && (
-              <ul className="hidden gap-8 md:flex">
+              <ul className="hidden items-center md:flex md:gap-0 [&_li:not(:last-child)]:mr-2.5">
                 {links.map((link) => (
-                  <li key={link.name}>
+                  <li key={link.name} className="h-[3.75rem] w-[3.75rem] text-center leading-[3.75rem]">
                     <Link
                       href={link.url}
-                      className={`text-sm font-medium text-white transition-opacity hover:opacity-80 ${
-                        focusedElement === ("id" in link ? link.id : "") ? "underline underline-offset-4" : ""
+                      className={`block text-center no-underline transition-colors duration-200 hover:text-[#666] hover:text-base ${
+                        focusedElement === ("id" in link ? link.id : "")
+                          ? "text-[#666] text-base"
+                          : "text-black"
                       }`}
                     >
                       {link.name}
@@ -109,10 +117,13 @@ export default function Header({ locale }: HeaderProps) {
               </ul>
             )}
             <div className="flex items-center gap-4">
+              <div className="flex h-10 items-center justify-end bg-[#f7f7f7] px-2 md:bg-transparent md:px-0">
               <LanguageHandler locale={locale} />
+            </div>
               <button
                 type="button"
-                className="text-2xl text-white md:hidden"
+                className="text-[#666] md:hidden"
+                style={{ fontSize: "1.4375rem" }}
                 onClick={() => setShowNav((prev) => !prev)}
                 aria-label="Menu"
                 aria-expanded={showNav}
@@ -124,16 +135,19 @@ export default function Header({ locale }: HeaderProps) {
         </nav>
         {isMobile && (
           <div
-            className={`overflow-hidden transition-all duration-300 md:hidden ${
-              showNav ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+            className={`flex items-center justify-center transition-opacity duration-200 md:hidden ${
+              showNav ? "opacity-100" : "opacity-0"
             }`}
           >
-            <ul className="flex flex-col gap-4 pb-4">
+            <ul className="mt-5 w-full list-none">
               {links.map((link) => (
-                <li key={link.name}>
+                <li
+                  key={link.name}
+                  className="h-[2.8125rem] w-full border-t border-[#f7f7f7] text-center leading-[2.8125rem]"
+                >
                   <Link
                     href={link.url}
-                    className="text-sm font-medium text-white hover:opacity-80"
+                    className="block text-center text-black no-underline transition-colors duration-200 hover:text-[#666] hover:text-base"
                     onClick={() => setShowNav(false)}
                   >
                     {link.name}

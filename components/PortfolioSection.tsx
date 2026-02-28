@@ -28,10 +28,10 @@ export default function PortfolioSection({
   tip,
 }: PortfolioSectionProps) {
   return (
-    <section id="portfolio" className="bg-[var(--background)] py-16 md:py-24">
+    <section id="portfolio" className="relative overflow-hidden bg-white">
       <div className="container-portfolio">
         <SectionTitle title={title} description={description} />
-        <div className="grid gap-8 sm:grid-cols-2">
+        <div className="flex flex-wrap justify-around pb-[3.125rem]">
           {projects.map((project) => (
             <PortfolioCard
               key={project.title}

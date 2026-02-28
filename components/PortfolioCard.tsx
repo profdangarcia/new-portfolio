@@ -15,47 +15,54 @@ export interface PortfolioCardProps {
 
 export default function PortfolioCard({ cardData, buttonText }: PortfolioCardProps) {
   return (
-    <article className="overflow-hidden rounded-lg border border-[var(--text)]/10 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-[var(--text)]/20 dark:bg-[var(--background)]">
-      <div className="relative">
-        <div className="relative aspect-video w-full overflow-hidden bg-[var(--text)]/5">
-          <Image
-            src={cardData.picture}
-            alt={cardData.title}
-            fill
-            className={`object-cover ${cardData.available === false ? "opacity-60 grayscale" : ""}`}
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </div>
-        {cardData.openSource && cardData.repoUrl && (
-          <span className="absolute right-2 top-2 rounded bg-black/80 px-2 py-1 text-xs font-medium text-white">
-            <a
-              href={cardData.repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline"
-            >
-              Open Source
-            </a>
-          </span>
-        )}
+    <article className="group relative m-[1.5625rem] flex w-[26.25rem] max-w-full flex-col rounded-[0.375rem] bg-[var(--background)] md:h-[15.625rem] md:max-w-[26.25rem]">
+      <div className="relative left-0 top-0 z-[1] flex h-[9.375rem] w-full shrink-0 items-center justify-center overflow-hidden rounded-t-[0.375rem] border-2 border-[var(--background)] bg-[var(--background)] transition-[width,height,left,top] duration-500 ease-in-out group-hover:h-[12.5rem] md:absolute md:h-full md:w-full md:rounded-[0.375rem] md:group-hover:h-[9.375rem] md:group-hover:w-[9.375rem] md:group-hover:left-[-4.6875rem] md:group-hover:top-[calc(50%-4.6875rem)]">
+        <Image
+          src={cardData.picture}
+          alt={cardData.title}
+          fill
+          className={`object-cover transition-all duration-500 ease-in-out ${
+            cardData.available === false ? "grayscale" : "grayscale-0"
+          }`}
+          sizes="26.25rem"
+        />
       </div>
-      <div className="flex flex-col gap-3 p-5">
-        <h3 className="font-display text-lg font-bold tracking-wide text-[var(--text-title)]">
-          {cardData.title}
-        </h3>
-        <p className="text-sm text-[var(--text)] leading-relaxed">
-          {cardData.description}
-        </p>
-        {cardData.available && (
+      {cardData.openSource && cardData.repoUrl && (
+        <div
+          className="absolute right-0 top-[0.9375rem] z-[2] flex h-[1.875rem] w-[7.5rem] items-center justify-end bg-[#d5137f] pr-2.5 font-bold transition-colors duration-200 hover:bg-[#b00765]"
+          style={{
+            clipPath: "polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 4% 50%)",
+          }}
+        >
           <a
-            href={cardData.websiteUrl}
+            href={cardData.repoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 inline-flex w-fit rounded-full bg-[var(--text-title)] px-5 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+            className="text-white no-underline"
           >
-            {buttonText}
+            Open Source
           </a>
-        )}
+        </div>
+      )}
+      <div className="relative flex w-full flex-1 items-center justify-center p-5 transition-all duration-500 ease-in-out md:absolute md:right-0 md:top-0 md:h-full md:w-[calc(100%-4.6875rem)]">
+        <div>
+          <h3 className="mb-1 text-[1rem] text-[var(--text-title)]">
+            {cardData.title}
+          </h3>
+          <p className="text-[0.75rem] text-[var(--text)]">
+            {cardData.description}
+          </p>
+          {cardData.available && (
+            <a
+              href={cardData.websiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2.5 inline-block rounded-[0.375rem] bg-[#333] px-[0.9375rem] py-2.5 font-semibold text-white no-underline transition-all duration-500 ease-in-out hover:bg-[#777]"
+            >
+              {buttonText}
+            </a>
+          )}
+        </div>
       </div>
     </article>
   );

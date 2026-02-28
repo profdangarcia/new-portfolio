@@ -18,35 +18,35 @@ export default function LanguageHandler({ locale }: LanguageHandlerProps) {
   }
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-2.5">
       <button
         type="button"
         onClick={() => handleSetLocale("en")}
-        className="rounded p-1 transition-opacity hover:opacity-80 aria-pressed:ring-2 aria-pressed:ring-white"
+        className="rounded p-0.5 transition-opacity duration-200 hover:opacity-80"
         aria-pressed={locale === "en"}
         aria-label="English"
       >
         <Image
           src="/us.svg"
           alt="English"
-          width={28}
-          height={20}
-          className={`h-5 w-7 object-contain ${locale !== "en" ? "opacity-50" : ""}`}
+          width={30}
+          height={30}
+          className={`h-[1.875rem] w-[1.875rem] object-contain ${locale !== "en" ? "opacity-50" : "opacity-100"}`}
         />
       </button>
       <button
         type="button"
         onClick={() => handleSetLocale("pt")}
-        className="rounded p-1 transition-opacity hover:opacity-80 aria-pressed:ring-2 aria-pressed:ring-white"
+        className="rounded p-0.5 transition-opacity duration-200 hover:opacity-80"
         aria-pressed={locale === "pt"}
         aria-label="Português"
       >
         <Image
           src="/br.svg"
           alt="Português BR"
-          width={28}
-          height={20}
-          className={`h-5 w-7 object-contain ${locale !== "pt" ? "opacity-50" : ""}`}
+          width={30}
+          height={30}
+          className={`h-[1.875rem] w-[1.875rem] object-contain ${locale !== "pt" ? "opacity-50" : "opacity-100"}`}
         />
       </button>
     </div>

@@ -16,7 +16,7 @@ interface ContactProps {
 
 export default function Contact({ title, description, form }: ContactProps) {
   return (
-    <section id="contact" className="bg-[var(--background)] py-16 md:py-24">
+    <section id="contact" className="bg-[var(--background)] py-[1.875rem] pb-[4.375rem]">
       <div className="container-portfolio">
         <SectionTitle title={title} description={description} />
         <ContactForm data={form} />

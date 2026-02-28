@@ -77,53 +77,49 @@ export default function ContactForm({ data }: ContactFormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mx-auto flex max-w-lg flex-col gap-4"
+      className="mx-auto mt-4 flex max-w-[50rem] flex-wrap items-center justify-center"
     >
-      <div>
+      <div className="flex w-full flex-col items-center md:max-w-[46%] md:mr-[8%]">
         <input
           id="name"
           type="text"
           placeholder={data.name.placeholder}
           disabled={status === "loading"}
           {...register("name")}
-          className={`w-full rounded-lg border bg-white px-4 py-3 text-[var(--foreground)] placeholder:text-[var(--text)] focus:outline-none focus:ring-2 dark:bg-[var(--background)] ${
-            errors.name
-              ? "border-[var(--error)] focus:ring-[var(--error)]"
-              : "border-[var(--text)]/20 focus:ring-[var(--text-title)]"
+          className={`mt-4 w-full rounded px-4 font-sans text-[var(--text)] text-[0.8125rem] transition-colors duration-500 focus:outline-none md:text-[0.875rem] ${
+            errors.name ? "border border-[var(--error)] border-b-[var(--error)]" : "border-0 border-b border-[#dfdfdf]"
           }`}
+          style={{ height: "2.8125rem" }}
         />
         {errors.name && (
           <p className="mt-1 text-sm text-[var(--error)]">{errors.name.message}</p>
         )}
       </div>
-      <div>
+      <div className="flex w-full flex-col items-center md:max-w-[46%]">
         <input
           id="email"
           type="email"
           placeholder={data.email.placeholder}
           disabled={status === "loading"}
           {...register("email")}
-          className={`w-full rounded-lg border bg-white px-4 py-3 text-[var(--foreground)] placeholder:text-[var(--text)] focus:outline-none focus:ring-2 dark:bg-[var(--background)] ${
-            errors.email
-              ? "border-[var(--error)] focus:ring-[var(--error)]"
-              : "border-[var(--text)]/20 focus:ring-[var(--text-title)]"
+          className={`mt-4 w-full rounded px-4 font-sans text-[var(--text)] text-[0.8125rem] transition-colors duration-500 focus:outline-none md:text-[0.875rem] ${
+            errors.email ? "border border-[var(--error)] border-b-[var(--error)]" : "border-0 border-b border-[#dfdfdf]"
           }`}
+          style={{ height: "2.8125rem" }}
         />
         {errors.email && (
           <p className="mt-1 text-sm text-[var(--error)]">{errors.email.message}</p>
         )}
       </div>
-      <div>
+      <div className="flex w-full flex-col">
         <textarea
           id="message"
           rows={6}
           placeholder={data.message.placeholder}
           disabled={status === "loading"}
           {...register("message")}
-          className={`w-full resize-y rounded-lg border bg-white px-4 py-3 text-[var(--foreground)] placeholder:text-[var(--text)] focus:outline-none focus:ring-2 dark:bg-[var(--background)] ${
-            errors.message
-              ? "border-[var(--error)] focus:ring-[var(--error)]"
-              : "border-[var(--text)]/20 focus:ring-[var(--text-title)]"
+          className={`mt-4 w-full resize-y rounded pt-4 pl-4 font-sans text-[var(--text)] text-[0.8125rem] transition-colors duration-500 focus:outline-none md:text-[0.875rem] ${
+            errors.message ? "border border-[var(--error)] border-b-[var(--error)]" : "border-0 border-b border-[#dfdfdf]"
           }`}
         />
         {errors.message && (
@@ -133,7 +129,37 @@ export default function ContactForm({ data }: ContactFormProps) {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="rounded-full bg-[var(--text-title)] px-6 py-3 font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-70"
+        className="relative mt-8 flex h-10 w-[13.4375rem] items-center justify-center rounded-[3.125rem] border-2 border-black font-semibold transition-all duration-300 ease-in-out hover:text-white"
+        style={{
+          fontFamily: "Montserrat, sans-serif",
+          color: status === "form" ? "var(--text-title)" : "#fff",
+          background:
+            status === "success"
+              ? "#25D366"
+              : status === "error"
+                ? "#db4437"
+                : status === "loading"
+                  ? "#000"
+                  : "transparent",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.color = "#fff";
+          if (status === "form") e.currentTarget.style.background = "#000";
+          else if (status === "success") e.currentTarget.style.background = "#25D366";
+          else if (status === "error") e.currentTarget.style.background = "#db4437";
+          else e.currentTarget.style.background = "#000";
+        }}
+        onMouseLeave={(e) => {
+          if (status === "form") {
+            e.currentTarget.style.background = "transparent";
+            e.currentTarget.style.color = "var(--text-title)";
+          } else {
+            e.currentTarget.style.color = "#fff";
+            if (status === "success") e.currentTarget.style.background = "#25D366";
+            else if (status === "error") e.currentTarget.style.background = "#db4437";
+            else e.currentTarget.style.background = "#000";
+          }
+        }}
       >
         {status === "loading" ? <Loader /> : buttonLabel}
       </button>

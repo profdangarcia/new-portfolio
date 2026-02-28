@@ -24,23 +24,25 @@ const iconMap = {
 
 export default function TechSection({ techs }: TechSectionProps) {
   return (
-    <section className="bg-[var(--background)] py-16 md:py-24">
+    <section className="py-[2.8125rem]">
       <div className="container-portfolio">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="flex flex-col items-center justify-center md:flex-row md:justify-between">
           {techs.map((tech) => {
             const Icon = iconMap[tech.icon as keyof typeof iconMap] ?? Monitor;
             return (
               <div
                 key={tech.title}
-                className="flex flex-col items-center gap-4 rounded-lg border border-[var(--text)]/10 bg-white p-6 text-center shadow-sm dark:border-[var(--text)]/20 dark:bg-[var(--background)]"
+                className="flex flex-col items-center justify-center py-5 text-center text-[var(--text-title)] md:h-[11.25rem] md:justify-between md:py-0"
               >
-                <Icon className="size-12 text-[var(--text-title)]" strokeWidth={1.5} />
-                <h3 className="font-display text-lg font-bold tracking-wider text-[var(--text-title)]">
-                  {tech.title}
-                </h3>
-                <p className="text-sm text-[var(--text)] leading-relaxed">
-                  {tech.description}
-                </p>
+                <Icon className="size-[2.8125rem] shrink-0 text-[var(--text-title)]" strokeWidth={1.5} />
+                <div className="md:h-[9.375rem]">
+                  <h3 className="my-4 font-normal tracking-[0.0625rem] text-[var(--text-title)] text-[0.8125rem] md:text-[0.9375rem]" style={{ fontFamily: "Montserrat, sans-serif" }}>
+                    {tech.title}
+                  </h3>
+                  <p className="max-w-[25rem] text-[var(--text)] text-[0.8125rem] leading-5 md:max-w-[14.375rem] md:text-[0.9375rem]">
+                    {tech.description}
+                  </p>
+                </div>
               </div>
             );
           })}

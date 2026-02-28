@@ -10,23 +10,23 @@ export default function PostItem({ data }: PostItemProps) {
   return (
     <Link
       href={`/blog/${data.slug}`}
-      className="group flex flex-col overflow-hidden rounded-lg border border-[var(--text)]/10 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-[var(--text)]/20 dark:bg-[var(--background)]"
+      className="group flex flex-col overflow-hidden rounded border-b-[0.1875rem] border-[#333] bg-[var(--primary)] shadow-[0_0.0625rem_0.125rem_rgba(0,0,0,0.07),0_0.125rem_0.25rem_rgba(0,0,0,0.07),0_0.25rem_0.5rem_rgba(0,0,0,0.07),0_0.5rem_1rem_rgba(0,0,0,0.07),0_1rem_2rem_rgba(0,0,0,0.07),0_2rem_4rem_rgba(0,0,0,0.07)]"
     >
-      <div className="relative aspect-video w-full bg-[var(--text)]/5">
+      <div className="relative h-[16.3125rem] w-full shrink-0 overflow-hidden rounded-t transition-[filter] duration-200 group-hover:[&_img]:brightness-[0.8]">
         <Image
           src={data.image}
           alt={data.title}
           fill
-          className="object-cover transition-transform group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover"
+          sizes="(max-width: 48rem) 100vw, 50vw"
         />
       </div>
-      <div className="flex flex-1 flex-col gap-2 p-5">
-        <h3 className="font-display text-lg font-bold tracking-wide text-[var(--text-title)]">
+      <div className="px-1.5 pb-1.5 pt-2.5">
+        <h2 className="min-h-[3.125rem] font-bold text-[var(--text-title)]" style={{ fontFamily: "Montserrat, sans-serif", margin: "0.9375rem 0 0.8125rem" }}>
           {data.title}
-        </h3>
-        <p className="line-clamp-2 text-sm text-[var(--text)]">{data.description}</p>
-        <span className="mt-auto text-xs text-[var(--text)]">
+        </h2>
+        <p className="mb-5 min-h-[3.9375rem] text-[var(--text)]">{data.description}</p>
+        <span className="text-[0.6875rem] text-[#b9b9b9]">
           {data.author} – {data.date}
         </span>
       </div>

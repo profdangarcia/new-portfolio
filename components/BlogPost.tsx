@@ -10,24 +10,24 @@ export default function BlogPost({ data }: BlogPostProps) {
   const { title, image, content, author, date } = data;
 
   return (
-    <article className="bg-[var(--background)] py-16 md:py-24">
+    <article className="min-h-[70vh] bg-[var(--background)] py-[1.875rem]">
       <div className="container-portfolio">
-        <div className="mx-auto max-w-3xl">
-          <h1 className="font-display text-3xl font-bold tracking-wide text-[var(--text-title)] md:text-4xl">
+        <div className="mx-auto max-w-3xl text-[0.875rem] md:text-[1rem]">
+          <h1 className="font-bold text-[var(--text-title)] text-[1.375rem] md:text-[1.875rem]" style={{ fontFamily: "Montserrat, sans-serif" }}>
             {title}
           </h1>
-          <p className="mt-2 text-sm text-[var(--text)]">
+          <p className="mt-2 text-[0.6875rem] text-[#b7b7b7] md:text-[0.75rem]">
             {author} – {date}
           </p>
           {image && (
-            <div className="relative mt-6 aspect-video w-full overflow-hidden rounded-lg bg-[var(--text)]/5">
+            <div className="relative my-5 mx-auto aspect-video w-full max-w-[37.5rem] overflow-hidden rounded">
               <Image
                 src={image}
                 alt={title}
                 fill
                 className="object-cover"
                 priority
-                sizes="(max-width: 768px) 100vw, 672px"
+                sizes="(max-width: 48rem) 100vw, 37.5rem"
               />
             </div>
           )}

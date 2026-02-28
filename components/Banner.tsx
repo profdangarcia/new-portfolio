@@ -21,22 +21,21 @@ export default function Banner({ lines }: BannerProps) {
       className="flex min-h-screen flex-col items-center justify-center bg-black bg-cover bg-center bg-no-repeat px-4 text-white"
       style={{ backgroundImage: "url('/banner-bg.png')" }}
     >
-      <div className="mb-5 text-center font-mono text-2xl font-bold drop-shadow-md md:mb-6 md:text-5xl lg:text-6xl">
+      <div className="mb-5 text-center font-mono text-[2rem] font-bold md:mb-6 md:text-[4.6875rem]" style={{ fontFamily: 'Montserrat, serif', textShadow: '0.0625rem 0.0625rem rgba(0,0,0,0.4)' }}>
         <TypeAnimation
           sequence={steps}
           wrapper="p"
           repeat={Infinity}
           cursor={true}
-          className="text-shadow"
         />
       </div>
       <SocialLinks isBanner />
       <a
         href="#about"
-        className="mt-24 flex items-end text-white transition-opacity hover:opacity-80 md:mt-32 md:text-4xl"
+        className="mt-24 flex h-[7.5rem] items-end text-[1.5rem] text-white transition-opacity hover:opacity-80 md:mt-32 md:text-[2.5rem]"
         aria-label="Scroll to about"
       >
-        <ChevronDown className="size-8 animate-bounce md:size-10" />
+        <ChevronDown className="animate-bounce" style={{ fontSize: 'inherit' }} />
       </a>
     </section>
   );
