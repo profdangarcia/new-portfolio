@@ -74,10 +74,19 @@ export default function ContactForm({ data }: ContactFormProps) {
           ? data.success
           : data.error;
 
+  const buttonBg =
+    status === "success"
+      ? "#25D366"
+      : status === "error"
+        ? "#db4437"
+        : status === "loading"
+          ? "#000"
+          : "transparent";
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mx-auto mt-4 flex max-w-[50rem] flex-wrap items-center justify-center"
+      className="mx-auto mt-[0.9375rem] flex max-w-[50rem] flex-wrap items-center justify-center"
     >
       <div className="flex w-full flex-col items-center md:max-w-[46%] md:mr-[8%]">
         <input
@@ -86,14 +95,23 @@ export default function ContactForm({ data }: ContactFormProps) {
           placeholder={data.name.placeholder}
           disabled={status === "loading"}
           {...register("name")}
-          className={`mt-4 w-full rounded px-4 font-sans text-[var(--text)] text-[0.8125rem] transition-colors duration-500 focus:outline-none md:text-[0.875rem] ${
-            errors.name ? "border border-[var(--error)] border-b-[var(--error)]" : "border-0 border-b border-[#dfdfdf]"
+          className={`mt-[0.9375rem] w-full rounded-[0.25rem] border-b bg-transparent px-[0.9375rem] font-sans text-[#777] transition-all duration-500 focus:outline-none lg:text-[0.875rem] ${
+            errors.name
+              ? "border border-[#ff3d3d] border-b-[#ff3d3d] focus:border-[#ff3d3d]"
+              : "border-0 border-b border-[#dfdfdf] focus:border focus:border-[#333] focus:border-b-[#333]"
           }`}
-          style={{ height: "2.8125rem" }}
+          style={{ height: "2.8125rem", fontSize: "0.8125rem" }}
         />
-        {errors.name && (
-          <p className="mt-1 text-sm text-[var(--error)]">{errors.name.message}</p>
-        )}
+        <div className="relative mt-[0.3125rem] flex h-[1.5625rem] w-full items-center justify-center overflow-hidden">
+          <span
+            className={`absolute text-center text-[#ff3d3d] transition-all duration-500 ease-in-out ${
+              errors.name ? "translate-y-0" : "translate-y-2.5"
+            }`}
+            style={{ fontSize: "0.8125rem" }}
+          >
+            {errors.name?.message ?? ""}
+          </span>
+        </div>
       </div>
       <div className="flex w-full flex-col items-center md:max-w-[46%]">
         <input
@@ -102,62 +120,71 @@ export default function ContactForm({ data }: ContactFormProps) {
           placeholder={data.email.placeholder}
           disabled={status === "loading"}
           {...register("email")}
-          className={`mt-4 w-full rounded px-4 font-sans text-[var(--text)] text-[0.8125rem] transition-colors duration-500 focus:outline-none md:text-[0.875rem] ${
-            errors.email ? "border border-[var(--error)] border-b-[var(--error)]" : "border-0 border-b border-[#dfdfdf]"
+          className={`mt-[0.9375rem] w-full rounded-[0.25rem] border-b bg-transparent px-[0.9375rem] font-sans text-[#777] transition-all duration-500 focus:outline-none lg:text-[0.875rem] ${
+            errors.email
+              ? "border border-[#ff3d3d] border-b-[#ff3d3d] focus:border-[#ff3d3d]"
+              : "border-0 border-b border-[#dfdfdf] focus:border focus:border-[#333] focus:border-b-[#333]"
           }`}
-          style={{ height: "2.8125rem" }}
+          style={{ height: "2.8125rem", fontSize: "0.8125rem" }}
         />
-        {errors.email && (
-          <p className="mt-1 text-sm text-[var(--error)]">{errors.email.message}</p>
-        )}
+        <div className="relative mt-[0.3125rem] flex h-[1.5625rem] w-full items-center justify-center overflow-hidden">
+          <span
+            className={`absolute text-center text-[#ff3d3d] transition-all duration-500 ease-in-out ${
+              errors.email ? "translate-y-0" : "translate-y-2.5"
+            }`}
+            style={{ fontSize: "0.8125rem" }}
+          >
+            {errors.email?.message ?? ""}
+          </span>
+        </div>
       </div>
       <div className="flex w-full flex-col">
         <textarea
           id="message"
-          rows={6}
+          rows={8}
           placeholder={data.message.placeholder}
           disabled={status === "loading"}
           {...register("message")}
-          className={`mt-4 w-full resize-y rounded pt-4 pl-4 font-sans text-[var(--text)] text-[0.8125rem] transition-colors duration-500 focus:outline-none md:text-[0.875rem] ${
-            errors.message ? "border border-[var(--error)] border-b-[var(--error)]" : "border-0 border-b border-[#dfdfdf]"
+          className={`mt-[0.9375rem] w-full resize-y rounded-[0.25rem] border-b bg-transparent pt-[0.9375rem] pl-[0.9375rem] font-sans text-[#777] transition-all duration-500 focus:outline-none lg:text-[0.875rem] ${
+            errors.message
+              ? "border border-[#ff3d3d] border-b-[#ff3d3d] focus:border-[#ff3d3d]"
+              : "border-0 border-b border-[#dfdfdf] focus:border focus:border-[#333] focus:border-b-[#333]"
           }`}
+          style={{ fontSize: "0.8125rem" }}
         />
-        {errors.message && (
-          <p className="mt-1 text-sm text-[var(--error)]">{errors.message.message}</p>
-        )}
+        <div className="relative mt-[0.3125rem] flex h-[1.5625rem] w-full items-center justify-center overflow-hidden">
+          <span
+            className={`absolute text-center text-[#ff3d3d] transition-all duration-500 ease-in-out ${
+              errors.message ? "translate-y-0" : "translate-y-2.5"
+            }`}
+            style={{ fontSize: "0.8125rem" }}
+          >
+            {errors.message?.message ?? ""}
+          </span>
+        </div>
       </div>
       <button
         type="submit"
         disabled={status === "loading"}
-        className="relative mt-8 flex h-10 w-[13.4375rem] items-center justify-center rounded-[3.125rem] border-2 border-black font-semibold transition-all duration-300 ease-in-out hover:text-white"
+        className="relative mt-[1.875rem] flex h-10 w-[13.4375rem] items-center justify-center rounded-[3.125rem] font-semibold transition-all duration-300 ease-in-out hover:text-white focus:outline-none"
         style={{
           fontFamily: "Montserrat, sans-serif",
-          color: status === "form" ? "var(--text-title)" : "#fff",
-          background:
-            status === "success"
-              ? "#25D366"
-              : status === "error"
-                ? "#db4437"
-                : status === "loading"
-                  ? "#000"
-                  : "transparent",
+          color: status === "form" ? "#333" : "#fff",
+          background: buttonBg,
+          border: "2px solid rgb(0, 0, 0)",
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.color = "#fff";
-          if (status === "form") e.currentTarget.style.background = "#000";
-          else if (status === "success") e.currentTarget.style.background = "#25D366";
-          else if (status === "error") e.currentTarget.style.background = "#db4437";
-          else e.currentTarget.style.background = "#000";
+          e.currentTarget.style.background =
+            status === "form" ? "#000" : buttonBg;
         }}
         onMouseLeave={(e) => {
           if (status === "form") {
             e.currentTarget.style.background = "transparent";
-            e.currentTarget.style.color = "var(--text-title)";
+            e.currentTarget.style.color = "#333";
           } else {
             e.currentTarget.style.color = "#fff";
-            if (status === "success") e.currentTarget.style.background = "#25D366";
-            else if (status === "error") e.currentTarget.style.background = "#db4437";
-            else e.currentTarget.style.background = "#000";
+            e.currentTarget.style.background = buttonBg;
           }
         }}
       >
