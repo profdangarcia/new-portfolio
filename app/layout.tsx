@@ -24,9 +24,24 @@ const sixCaps = Six_Caps({
 });
 
 export const metadata: Metadata = {
-  title: "Dan Garcia | Front-end Developer",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://dangarcia-devel.vercel.app"
+  ),
+  title: {
+    default: "Dan Garcia | Front-end Developer",
+    template: "%s | Dan Garcia",
+  },
   description:
     "Um desenvolvedor front-end que ama a tecnologia e novos desafios!",
+  openGraph: {
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+  },
+  verification: {
+    google: "hyVDovsqxQpSLvMzLawu_CkTM5siBtxl1Y6RrNhxpY8",
+  },
 };
 
 export default async function RootLayout({

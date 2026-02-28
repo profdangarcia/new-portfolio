@@ -3,6 +3,7 @@ export default {
     seo: {
       title: "Blog",
       description: "Café com leitura",
+      canonical: "/blog",
     },
     blog: {
       title: "BLOG 📰",

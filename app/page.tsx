@@ -5,6 +5,29 @@ import About from "@/components/About";
 import TechSection from "@/components/TechSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import Contact from "@/components/Contact";
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocaleCookie();
+  const data = homeData[locale];
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://dangarcia-devel.vercel.app";
+  return {
+    title: data.seo.title,
+    description: data.seo.description,
+    openGraph: {
+      title: data.seo.title,
+      description: data.seo.description,
+      url: baseUrl + "/",
+      images: [{ url: baseUrl + "/dev.png" }],
+    },
+    twitter: {
+      title: data.seo.title,
+      description: data.seo.description,
+    },
+    alternates: { canonical: baseUrl + "/" },
+  };
+}
 
 export default async function Home() {
   const locale = await getLocaleCookie();
