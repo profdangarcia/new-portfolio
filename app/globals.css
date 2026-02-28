@@ -122,27 +122,26 @@ button {
 }
 #post-content h2 {
   margin: 1.875rem 0 0.9375rem;
-  color: var(--text-title);
-  font-family: var(--font-six-caps), sans-serif;
+  color: #333;
+  font-family: var(--font-poppins), sans-serif;
   font-weight: 700;
-  letter-spacing: 0.05em;
   font-size: 1.25rem;
 }
 #post-content h3,
 #post-content h4 {
   margin: 0.9375rem 0;
-  color: var(--text-title);
+  color: #333;
   font-size: 1.1rem;
 }
 #post-content p {
   margin-bottom: 1rem;
-  color: var(--text);
+  color: #777;
 }
 #post-content p + p {
   margin-top: 0.75rem;
 }
 #post-content a {
-  color: var(--text-title);
+  color: #333;
   font-weight: bold;
   text-decoration: none;
 }
@@ -154,17 +153,18 @@ button {
   margin: 0.625rem 0;
   margin-left: 1.875rem;
   padding-left: 0;
-  color: var(--text);
+  color: #777;
   list-style: "☕   ";
 }
 #post-content li + li {
   margin-top: 0.625rem;
 }
 #post-content img {
-  border-radius: 0.5rem;
-  margin: 1rem 0;
+  border-radius: 0.25rem;
+  margin: 1.25rem auto;
   width: 100%;
   max-width: 18.75rem;
+  display: block;
 }
 #post-content pre,
 #post-content code {
@@ -194,13 +194,4 @@ button {
   max-width: 100%;
   min-width: 6.25rem;
   padding: 0;
-}
-@media (prefers-color-scheme: dark) {
-  #post-content pre,
-  #post-content code {
-    background: rgba(255, 255, 255, 0.08);
-  }
-  #post-content pre {
-    background: rgba(2, 2, 2, 0.85);
-  }
 }

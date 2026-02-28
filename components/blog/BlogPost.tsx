@@ -10,22 +10,26 @@ export default function BlogPost({ data }: BlogPostProps) {
   const { title, image, content, author, date } = data;
 
   return (
-    <article className="min-h-[70vh] bg-[var(--background)] py-[1.875rem]">
+    <main className="min-h-[70vh] bg-[#f5f5f5] py-[1.875rem]">
       <div className="container-portfolio">
-        <div className="mx-auto max-w-3xl text-[0.875rem] md:text-[1rem]">
-          <h1 className="font-bold text-[var(--text-title)] text-[1.375rem] md:text-[1.875rem]" style={{ fontFamily: "Montserrat, sans-serif" }}>
+        <article className="mx-auto flex max-w-3xl flex-col text-[0.875rem] md:text-[1rem]">
+          <h1
+            className="font-bold text-[#333] text-[1.375rem] md:text-[1.875rem]"
+            style={{ fontFamily: "Montserrat, sans-serif" }}
+          >
             {title}
           </h1>
-          <p className="mt-2 text-[0.6875rem] text-[#b7b7b7] md:text-[0.75rem]">
+          <p className="mt-0 text-[0.6875rem] text-[#b7b7b7] md:text-[0.75rem]">
             {author} – {date}
           </p>
           {image && (
-            <div className="relative my-5 mx-auto aspect-video w-full max-w-[37.5rem] overflow-hidden rounded">
+            <div className="relative my-5 mx-auto w-full max-w-[37.5rem] overflow-hidden rounded-[0.25rem]">
               <Image
                 src={image}
                 alt={title}
-                fill
-                className="object-cover"
+                width={600}
+                height={340}
+                className="h-auto w-full object-cover"
                 priority
                 sizes="(max-width: 48rem) 100vw, 37.5rem"
               />
@@ -34,15 +38,15 @@ export default function BlogPost({ data }: BlogPostProps) {
           {content && (
             <div
               id="post-content"
-              className="mt-8"
+              className="mt-0"
               dangerouslySetInnerHTML={{ __html: content }}
             />
           )}
-          <div className="mt-12 border-t border-[var(--text)]/10 pt-8">
+          <div className="mt-10 w-full border-t border-[#777]/10 pt-8">
             <Comments />
           </div>
-        </div>
+        </article>
       </div>
-    </article>
+    </main>
   );
 }
