@@ -23,6 +23,7 @@ export default function Banner({ lines }: BannerProps) {
     >
       <div className="mb-5 text-center font-mono text-[2rem] font-bold md:mb-6 md:text-[4.6875rem]" style={{ fontFamily: 'Montserrat, serif', textShadow: '0.0625rem 0.0625rem rgba(0,0,0,0.4)' }}>
         <TypeAnimation
+          key={lines.join("|")}
           sequence={steps}
           wrapper="p"
           repeat={Infinity}
