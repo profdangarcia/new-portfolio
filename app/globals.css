@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f5f5f5;
   --foreground: #171717;
+  --primary: #fff;
+  --text-title: #333;
+  --text: #777;
+  --error: #ff3d3d;
+  --wrapper-max: 1180px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-text-title: var(--text-title);
+  --color-text: var(--text);
+  --color-error: var(--error);
+  --font-sans: var(--font-poppins);
+  --font-mono: var(--font-montserrat);
+  --font-display: var(--font-six-caps);
+  --breakpoint-tablet: 768px;
+  --breakpoint-medium: 1024px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --text-title: #e5e5e5;
+    --text: #a3a3a3;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins), system-ui, sans-serif;
+}
+
+/* Wrapper do portfolio (max-width 1180px, centralizado) */
+.container-portfolio {
+  width: 100%;
+  max-width: var(--wrapper-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-portfolio {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
