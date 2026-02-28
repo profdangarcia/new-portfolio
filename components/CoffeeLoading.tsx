@@ -51,25 +51,26 @@ export default function CoffeeLoading() {
       }}
       aria-hidden="true"
     >
-      <div
-        className="absolute left-1/2 top-1/2 h-[100px] w-[140px] -translate-x-1/2 -translate-y-1/2 rounded-b-[50px] border-[6px] border-[#111] bg-white shadow-[0_0_0_6px_white] md:h-[140px] md:w-[180px] md:rounded-b-[70px]"
-        style={{
-          transform: showCup
-            ? "translate(-50%, -50%) translateX(0)"
-            : "translate(-50%, -50%) translateX(-100vw)",
-          transition: "transform 1s ease-in-out",
-        }}
-      >
-        {/* Coffee fill animation */}
+      {/* Wrapper centralizado por flexbox (mais estável no mobile) */}
+      <div className="flex shrink-0 items-center justify-center">
         <div
-          className={`absolute inset-x-[6px] bottom-[6px] rounded-b-[44px] bg-[#3d2314] md:rounded-b-[64px] ${showCup ? "coffee-fill" : ""}`}
-          style={{ height: showCup ? undefined : "0%" }}
-        />
-        {/* Handle */}
-        <div
-          className="absolute left-[146px] top-[-2px] z-[100] h-[50px] w-[35px] rounded-r-lg border-[6px] border-white border-l-transparent bg-transparent md:left-[186px] md:top-[2px] md:h-[70px] md:w-[40px] md:rounded-r-3xl"
-          aria-hidden
-        />
+          className="relative h-[100px] w-[140px] rounded-b-[50px] border-[6px] border-[#111] bg-white shadow-[0_0_0_6px_white] md:h-[140px] md:w-[180px] md:rounded-b-[70px]"
+          style={{
+            transform: showCup ? "translateX(0)" : "translateX(-100vw)",
+            transition: "transform 1s ease-in-out",
+          }}
+        >
+          {/* Coffee fill animation */}
+          <div
+            className={`absolute inset-x-[6px] bottom-[6px] rounded-b-[44px] bg-[#3d2314] md:rounded-b-[64px] ${showCup ? "coffee-fill" : ""}`}
+            style={{ height: showCup ? undefined : "0%" }}
+          />
+          {/* Handle */}
+          <div
+            className="absolute left-[146px] top-[-2px] z-[100] h-[50px] w-[35px] rounded-r-lg border-[6px] border-white border-l-transparent bg-transparent md:left-[186px] md:top-[2px] md:h-[70px] md:w-[40px] md:rounded-r-3xl"
+            aria-hidden
+          />
+        </div>
       </div>
     </div>
   );
