@@ -1,63 +1,76 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface AboutProps {
   title: string;
   messages: readonly string[];
 }
 
+/**
+ * Replicado fielmente do my-portfolio:
+ * - Container: width 100%, bg #fff, padding-top 60px, Montserrat
+ * - Content: flex column → row em 768px, align-items center, justify-content flex-start
+ * - DevPicture: 100% max-width 400px; em 1024px width 700px, margin-right 20px, animação translateX(-1000px) → 0
+ * - AboutContainer: padding 30px 15px, opacidade 0 → 1
+ * - AboutTitle: font-weight 500, 23px → 32px (1024px), margin-bottom 30px, color #333
+ * - AboutText: margin-bottom 15px, color #777, 13px → 16px (1024px), line-height 24px, max-width 700px
+ */
 export default function About({ title, messages }: AboutProps) {
   const [animate, setAnimate] = useState(false);
 
+  const handleScroll = useCallback(() => {
+    if (typeof window !== "undefined" && window.pageYOffset >= 200 && !animate) {
+      setAnimate(true);
+    }
+  }, [animate]);
+
   useEffect(() => {
-    const handleScroll = () => {
-      if (typeof window !== "undefined" && window.pageYOffset >= 200 && !animate) {
-        setAnimate(true);
-      }
-    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [animate]);
+  }, [handleScroll]);
 
   return (
     <section
       id="about"
-      className="bg-white pt-[3.75rem] font-mono"
-      style={{ fontFamily: 'Montserrat, sans-serif' }}
+      className="w-full bg-white pt-[3.75rem]"
+      style={{ fontFamily: "Montserrat, sans-serif" }}
     >
-      <div className="container-portfolio flex flex-col md:flex-row md:items-center md:justify-start">
+      <div className="flex flex-col justify-center md:flex-row md:items-center md:justify-start">
         <div
-          className={`relative w-full max-w-[25rem] shrink-0 transition-all duration-1000 ease-in md:mr-5 md:max-w-full md:w-[43.75rem] ${
-            animate ? "translate-x-0 opacity-100" : "-translate-x-[62.5rem] opacity-100"
-          }`}
+          className="h-auto w-full max-w-[25rem] shrink-0 overflow-hidden rounded-[0.375rem] transition-[transform] duration-1000 ease-in lg:mr-5 lg:max-w-full lg:w-[43.75rem]"
+          style={{
+            transform: animate ? "translateX(0)" : "translateX(-1000px)",
+          }}
         >
           <Image
             src="/dev.png"
             alt="Dan Garcia - Dev"
-            width={400}
-            height={400}
-            className="h-auto w-full rounded-[0.375rem] object-cover"
+            width={700}
+            height={700}
+            className="h-auto w-full object-cover"
           />
         </div>
+
+        {/* AboutContainer: padding 30px 15px, opacidade */}
         <div
-          className={`px-4 py-8 transition-all duration-1000 ease-in md:px-0 md:py-0 ${
-            animate ? "opacity-100" : "opacity-0"
-          }`}
-          style={{ padding: "1.875rem 0.9375rem" }}
+          className="px-[0.9375rem] py-[1.875rem] transition-opacity duration-1000 ease-in"
+          style={{ opacity: animate ? 1 : 0 }}
         >
-          <h2 className="mb-[1.875rem] font-medium text-[var(--text-title)] text-[1.4375rem] md:text-[2rem]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <h2 className="mb-[1.875rem] font-medium text-[#333] text-[1.4375rem] lg:text-[2rem]">
             {title}
           </h2>
-          {messages.map((msg) => (
-            <p
-              key={msg.slice(0, 30)}
-              className="mb-[0.9375rem] text-[var(--text)] text-[0.8125rem] leading-6 md:text-[1rem] md:max-w-[43.75rem]"
-            >
-              {msg}
-            </p>
-          ))}
+          <div className="lg:max-w-[43.75rem]">
+            {messages.map((msg) => (
+              <p
+                key={msg.slice(0, 30)}
+                className="mb-[0.9375rem] text-[#777] text-[0.8125rem] leading-6 lg:text-[1rem]"
+              >
+                {msg}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
     </section>
