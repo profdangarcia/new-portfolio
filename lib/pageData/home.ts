@@ -95,7 +95,7 @@ export default {
         title: "Aqui, pegue ☕",
         message:
           "Este portfólio também é open source e está no Github. Corre pra ver!",
-        url: "https://github.com/profdangarcia/my-portfolio",
+        url: "https://github.com/profdangarcia/new-portfolio",
       },
     },
     contact: {
@@ -217,7 +217,7 @@ export default {
         title: "Here, take it ☕",
         message:
           "This portfolio is open source too and is on Github. Check it out!",
-        url: "https://github.com/profdangarcia/my-portfolio",
+        url: "https://github.com/profdangarcia/new-portfolio",
       },
     },
     contact: {
