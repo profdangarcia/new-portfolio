@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getLocaleCookie } from "@/app/actions/locale";
 import { getAllPosts } from "@/lib/posts";
 import blogData from "@/lib/pageData/blog";
-import BlogGrid from "@/components/BlogGrid";
+import BlogGrid from "@/components/blog/BlogGrid";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocaleCookie();

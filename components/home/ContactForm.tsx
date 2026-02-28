@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import Loader from "./Loader";
+import Loader from "@/components/Loader";
 
 export type ContactFormData = {
   name: string;

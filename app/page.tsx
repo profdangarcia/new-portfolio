@@ -1,10 +1,10 @@
 import { getLocaleCookie } from "@/app/actions/locale";
 import homeData from "@/lib/pageData/home";
-import Banner from "@/components/Banner";
-import About from "@/components/About";
-import TechSection from "@/components/TechSection";
-import PortfolioSection from "@/components/PortfolioSection";
-import Contact from "@/components/Contact";
+import Banner from "@/components/home/Banner";
+import About from "@/components/home/About";
+import TechSection from "@/components/home/TechSection";
+import PortfolioSection from "@/components/home/PortfolioSection";
+import Contact from "@/components/home/Contact";
 import type { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {

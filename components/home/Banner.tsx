@@ -2,7 +2,7 @@
 
 import { TypeAnimation } from "react-type-animation";
 import { ChevronDown } from "lucide-react";
-import SocialLinks from "./SocialLinks";
+import SocialLinks from "@/components/SocialLinks";
 
 interface BannerProps {
   lines: readonly string[];
