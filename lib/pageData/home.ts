@@ -1,7 +1,7 @@
 export default {
   pt: {
     seo: {
-      title: "Aceita um café?",
+      title: "Aceita um café? | Dan Garcia",
       description:
         "Um desenvolvedor front-end que ama a tecnologia e novos desafios!",
     },
@@ -123,7 +123,7 @@ export default {
   },
   en: {
     seo: {
-      title: "Would you like coffee?",
+      title: "Would you like coffee? | Dan Garcia",
       description:
         "A front-end developer who loves technology and new challenges!",
     },
