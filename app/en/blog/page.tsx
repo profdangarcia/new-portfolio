@@ -12,11 +12,13 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: data.title,
     description: data.description,
+    authors: [{ name: data.author, url: baseUrl }],
     openGraph: {
       title: data.title,
       description: data.description,
       url: baseUrl + canonical,
       images: [{ url: baseUrl + "/blog-thumbnail.png" }],
+      publishedTime: data.publishedTime,
     },
     twitter: {
       title: data.title,
