@@ -1,14 +1,89 @@
 @import "tailwindcss";
 
+/* ========== Design system ========== */
 :root {
-  --background: #f5f5f5;
+  /* Primary & accent */
+  --primary: #6d28d9;
+  --primary-hover: #5b21b6;
+  --primary-light: rgba(109, 40, 217, 0.12);
+  /* Surfaces */
+  --background: #f8f7f9;
+  --surface: #ffffff;
+  --surface-elevated: #ffffff;
+  /* Text */
   --foreground: #171717;
-  --primary: #fff;
-  --text-title: #333;
-  --text: #777;
-  --error: #ff3d3d;
+  --text-title: #1f1f1f;
+  --text: #6b6b6b;
+  --text-muted: #9ca3af;
+  /* Borders & shadows */
+  --border: #e5e7eb;
+  --border-focus: var(--primary);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+  /* Spacing scale (4px base) */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  /* Layout */
   --wrapper-max: 73.75rem;
-  --logo-underline: #6d28d9;
+  --radius-sm: 0.375rem;   /* 6px */
+  --radius-md: 0.5rem;     /* 8px */
+  --radius-lg: 0.75rem;    /* 12px */
+  --radius-xl: 1rem;       /* 16px */
+  /* Footer (always dark) */
+  --footer-bg: #1a1a1d;
+  --footer-text: #9ca3af;
+  /* Legacy / compatibility */
+  --logo-underline: var(--primary);
+  --error: #dc2626;
+}
+
+[data-theme="dark"],
+.dark {
+  --background: #0f0f12;
+  --surface: #18181b;
+  --surface-elevated: #1f1f23;
+  --foreground: #fafafa;
+  --text-title: #f4f4f5;
+  --text: #a1a1aa;
+  --text-muted: #71717a;
+  --border: #27272a;
+  --border-focus: #8b5cf6;
+  --primary: #8b5cf6;
+  --primary-hover: #7c3aed;
+  --primary-light: rgba(139, 92, 246, 0.15);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.35), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.2);
+  --footer-bg: #0d0d0f;
+  --footer-text: #71717a;
+}
+
+/* System preference dark (no toggle yet) – override when data-theme is not set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #0f0f12;
+    --surface: #18181b;
+    --surface-elevated: #1f1f23;
+    --foreground: #fafafa;
+    --text-title: #f4f4f5;
+    --text: #a1a1aa;
+    --text-muted: #71717a;
+    --border: #27272a;
+    --primary: #8b5cf6;
+    --primary-hover: #7c3aed;
+    --primary-light: rgba(139, 92, 246, 0.15);
+  }
 }
 
 @theme inline {
@@ -25,15 +100,7 @@
   --breakpoint-medium: 64rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --text-title: #e5e5e5;
-    --text: #a3a3a3;
-  }
-}
-
+/* ========== Base ========== */
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -59,44 +126,84 @@ button {
   outline: none;
 }
 
+/* Focus ring (micro-interaction) */
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 0.125rem solid var(--primary);
+  outline-offset: 0.125rem;
+}
+
+/* Link hover underline growth */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.125rem;
+  width: 0;
+  height: 0.125rem;
+  background: var(--primary);
+  transition: width 0.2s ease;
+}
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  width: 100%;
+}
+
+/* Button hover micro-interaction */
+.btn-interact {
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.btn-interact:hover {
+  transform: translateY(-0.0625rem);
+}
+.btn-interact:active {
+  transform: translateY(0);
+}
+
 .container-portfolio {
   width: 100%;
   max-width: var(--wrapper-max);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 0.9375rem;
-  padding-right: 0.9375rem;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
   position: relative;
 }
 
+/* ========== Tip box (portfolio) ========== */
 .tip-box {
   position: absolute;
   display: flex;
   flex-direction: column;
   z-index: 9;
-  bottom: calc(var(--tip-bottom, -200) * 1px);
-  right: calc(50vw - 150px);
-  width: 300px;
-  height: 250px;
-  padding: 10px 10px 0;
-  border-radius: 4px 4px 0 0;
-  box-shadow: 12px -10px 10px 0 rgba(0, 0, 0, 0.15);
+  bottom: calc(var(--tip-bottom, -12.5) * 1rem);
+  right: calc(50vw - 9.375rem);
+  width: 18.75rem;
+  height: 15.625rem;
+  padding: 0.625rem 0.625rem 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  box-shadow: var(--shadow-lg);
   transition: bottom 0.5s ease-in-out, right 0.5s ease-in-out;
 }
 @media (min-width: 48rem) {
   .tip-box {
-    right: calc(var(--tip-right, -250) * 1px);
+    right: calc(var(--tip-right, -15.625) * 1rem);
     bottom: 0;
     top: 0;
     left: auto;
     margin: auto 0;
-    width: 300px;
-    height: 250px;
+    width: 18.75rem;
+    height: 15.625rem;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    border-radius: 4px 0 0 4px;
-    padding: 10px 10px 10px 0;
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+    padding: 0.625rem 0.625rem 0.625rem 0;
   }
 }
 
@@ -104,20 +211,20 @@ button {
   animation: tipbox-bounce 2s ease infinite;
 }
 .tip-box-bouncing-short {
-  --tipbox-high: -5px;
-  --tipbox-low: -2px;
+  --tipbox-high: -0.3125rem;
+  --tipbox-low: -0.125rem;
 }
 @keyframes tipbox-bounce {
   0% { transform: scale(1, 1) translateY(0); }
   10% { transform: scale(1.1, 0.9) translateY(0); }
-  30% { transform: scale(0.9, 1.1) translateY(var(--tipbox-high, -5px)); }
+  30% { transform: scale(0.9, 1.1) translateY(var(--tipbox-high, -0.3125rem)); }
   50% { transform: scale(1, 1) translateY(0); }
-  57% { transform: scale(1, 1) translateY(var(--tipbox-low, -2px)); }
+  57% { transform: scale(1, 1) translateY(var(--tipbox-low, -0.125rem)); }
   64% { transform: scale(1, 1) translateY(0); }
   100% { transform: scale(1, 1) translateY(0); }
 }
 
-/* Coffee loader – cup fill animation (first visit) */
+/* Coffee loader */
 @keyframes coffee-fill {
   0% { height: 0%; }
   100% { height: 75%; }
@@ -126,12 +233,13 @@ button {
   animation: coffee-fill 2.5s ease-in-out forwards;
 }
 
+/* ========== Post content (blog) ========== */
 #post-content {
   line-height: 1.75rem;
 }
 #post-content h2 {
   margin: 1.875rem 0 0.9375rem;
-  color: #333;
+  color: var(--text-title);
   font-family: var(--font-poppins), sans-serif;
   font-weight: 700;
   font-size: 1.25rem;
@@ -139,18 +247,18 @@ button {
 #post-content h3,
 #post-content h4 {
   margin: 0.9375rem 0;
-  color: #333;
+  color: var(--text-title);
   font-size: 1.1rem;
 }
 #post-content p {
   margin-bottom: 1rem;
-  color: #777;
+  color: var(--text);
 }
 #post-content p + p {
   margin-top: 0.75rem;
 }
 #post-content a {
-  color: #333;
+  color: var(--primary);
   font-weight: bold;
   text-decoration: none;
 }
@@ -162,14 +270,14 @@ button {
   margin: 0.625rem 0;
   margin-left: 1.875rem;
   padding-left: 0;
-  color: #777;
+  color: var(--text);
   list-style: "☕   ";
 }
 #post-content li + li {
   margin-top: 0.625rem;
 }
 #post-content img {
-  border-radius: 0.25rem;
+  border-radius: var(--radius-md);
   margin: 1.25rem auto;
   width: 100%;
   max-width: 18.75rem;
@@ -177,7 +285,7 @@ button {
 }
 #post-content img[src*="/posts/assets/"] {
   max-width: 100%;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 #post-content .post-figcaption {
   font-size: 0.8rem;
@@ -190,9 +298,9 @@ button {
 }
 #post-content pre,
 #post-content code {
-  background: rgba(0, 0, 0, 0.06);
+  background: var(--surface-elevated);
   padding: 0.1rem 0.3rem 0.2rem;
-  border-radius: 0.2rem;
+  border-radius: var(--radius-sm);
   font-size: 0.9em;
   font-weight: bold;
   word-wrap: break-word;
@@ -202,7 +310,7 @@ button {
   background: rgba(2, 2, 2, 0.7);
   color: white;
   padding: 0.625rem;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-md);
   margin: 0.9375rem 0;
   overflow-x: auto;
 }
