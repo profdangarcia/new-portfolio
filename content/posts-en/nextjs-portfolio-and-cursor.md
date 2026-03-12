@@ -2,7 +2,7 @@
 id: 3
 title: "Rebuilding the portfolio: Next.js, Tailwind and a little help from Cursor"
 description: "A write-up on building the new portfolio with modern tooling and AI in the development flow"
-image: "/posts/post3-thumb.png"
+image: "/posts/en/post3-thumb.png"
 author: "Daniel Garcia"
 date: "28 Feb. 2026"
 ---

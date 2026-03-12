@@ -2,7 +2,7 @@
 id: 5
 title: "From React + GraphQL to a Windows installer: packaging Financy with Electron"
 description: "How I took a React web app with a GraphQL API to a working Windows installer — and what I learned along the way"
-image: "/posts/post5-thumb.png"
+image: "/posts/en/post5-thumb.png"
 author: "Daniel Garcia"
 date: "10 Mar. 2026"
 ---

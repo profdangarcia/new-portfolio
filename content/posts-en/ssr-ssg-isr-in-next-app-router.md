@@ -2,7 +2,7 @@
 id: 4
 title: "SSR, SSG and ISR in Next.js: from Pages Router to App Router"
 description: "How the rendering strategies you already know work in the new Next.js with the App Router"
-image: "/posts/post4-thumb.png"
+image: "/posts/en/post4-thumb.png"
 author: "Daniel Garcia"
 date: "06 Mar. 2026"
 ---

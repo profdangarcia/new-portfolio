@@ -2,7 +2,7 @@
 id: 2
 title: "The real power of Next.js with SSG and ISR"
 description: "Meet the Next.js features that made it the go-to React framework and a solid alternative to SSR"
-image: "/posts/post2-thumb.png"
+image: "/posts/en/post2-thumb.png"
 author: "Daniel Garcia"
 date: "02 Apr. 2021"
 ---
