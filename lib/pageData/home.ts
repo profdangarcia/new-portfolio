@@ -3,7 +3,9 @@ export default {
     seo: {
       title: "Aceita um café? | Dan Garcia",
       description:
-        "Um desenvolvedor front-end que ama a tecnologia e novos desafios!",
+        "Um desenvolvedor front-end que ama a tecnologia e novos desafios. Portfólio de Dan Garcia: React, Next.js, Node.js e projetos open source. Entre em contato!",
+      author: "Dan Garcia",
+      publishedTime: "2026-03-01",
     },
     banner: [
       "Seja bem-vindo!",
@@ -125,7 +127,9 @@ export default {
     seo: {
       title: "Would you like coffee? | Dan Garcia",
       description:
-        "A front-end developer who loves technology and new challenges!",
+        "A front-end developer who loves technology and new challenges. Dan Garcia's portfolio: React, Next.js, Node.js and open source projects. Get in touch!",
+      author: "Dan Garcia",
+      publishedTime: "2026-03-01",
     },
     banner: [
       "Be Welcome!",
