@@ -9,25 +9,27 @@ interface BlogGridProps {
 }
 
 export default function BlogGrid({ title, description, posts, basePath = "/blog" }: BlogGridProps) {
+  const [first, ...rest] = posts;
+
   return (
-    <section className="bg-[#f5f5f5] py-4">
+    <section className="bg-[var(--background)] py-8">
       <div className="container-portfolio">
-        <div className="mt-5 text-right">
+        <div className="mb-10 text-center md:text-left">
           <h1
-            className="font-bold text-[#333] text-[1.625rem] md:text-[2.25rem]"
+            className="font-bold text-[var(--text-title)] text-2xl md:text-3xl"
             style={{ fontFamily: "Montserrat, sans-serif" }}
           >
             {title}
           </h1>
-          <h3 className="mt-[0.9375rem] text-right text-[#777] text-[1rem] md:text-[1.125rem]">
+          <p className="mt-4 text-[var(--text)] text-base md:text-lg">
             {description}
-          </h3>
+          </p>
         </div>
-        <div
-          className="grid min-h-[75vh] grid-cols-[repeat(auto-fill,minmax(17.5rem,1fr))] gap-5 py-[0.9375rem]"
-          style={{ gridAutoRows: "minmax(min-content, max-content)" }}
-        >
-          {posts.map((post) => (
+        <div className="grid min-h-[75vh] grid-cols-1 gap-6 py-4 sm:grid-cols-2 lg:grid-cols-3">
+          {first && (
+            <PostItem key={first.slug} data={first} basePath={basePath} featured />
+          )}
+          {rest.map((post) => (
             <PostItem key={post.slug} data={post} basePath={basePath} />
           ))}
         </div>

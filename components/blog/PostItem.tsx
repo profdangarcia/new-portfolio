@@ -5,37 +5,49 @@ import type { PostMeta } from "@/types/post";
 interface PostItemProps {
   data: PostMeta;
   basePath?: string;
+  featured?: boolean;
 }
 
-export default function PostItem({ data, basePath = "/blog" }: PostItemProps) {
+export default function PostItem({ data, basePath = "/blog", featured = false }: PostItemProps) {
   return (
     <Link
       href={`${basePath}/${data.slug}`}
-      className="group flex flex-col overflow-hidden rounded-[0.25rem] border-b-[0.1875rem] border-[#333] bg-white no-underline shadow-[0_1px_2px_rgba(0,0,0,0.07),0_2px_4px_rgba(0,0,0,0.07),0_4px_8px_rgba(0,0,0,0.07),0_8px_16px_rgba(0,0,0,0.07),0_16px_32px_rgba(0,0,0,0.07),0_32px_64px_rgba(0,0,0,0.07)]"
+      className={`group flex flex-col overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] no-underline shadow-[var(--shadow-card)] transition-all duration-200 hover:shadow-[var(--shadow-md)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] ${
+        featured ? "md:col-span-2 md:flex-row" : ""
+      }`}
     >
-      <div className="relative h-[16.3125rem] w-full shrink-0 overflow-hidden rounded-t-[0.25rem]">
+      <div
+        className={`relative w-full shrink-0 overflow-hidden bg-[var(--background)] ${
+          featured ? "h-56 aspect-video md:h-auto md:w-3/5 md:aspect-video" : "h-52"
+        }`}
+      >
         <Image
           src={data.image}
           alt={data.title}
           fill
-          className="object-cover transition-[filter] duration-200 ease-in-out group-hover:brightness-[0.8]"
-          sizes="(max-width: 48rem) 100vw, 50vw"
+          className={`object-cover transition-all duration-200 group-hover:scale-105 ${
+            featured ? "object-top" : "object-center"
+          }`}
+          sizes={featured ? "(max-width: 768px) 100vw, 60vw" : "(max-width: 48rem) 100vw, 50vw"}
         />
       </div>
-      <div className="px-[0.3125rem] pb-[0.3125rem] pt-[0.625rem]">
+      <div className="flex flex-1 flex-col p-4">
         <h2
-          className="min-h-[3.125rem] font-bold text-[#333]"
-          style={{
-            fontFamily: "Montserrat, sans-serif",
-            margin: "0.9375rem 0 0.8125rem",
-          }}
+          className={`font-bold text-[var(--text-title)] ${
+            featured ? "text-lg md:text-xl" : "text-base"
+          }`}
+          style={{ fontFamily: "Montserrat, sans-serif" }}
         >
           {data.title}
         </h2>
-        <p className="mb-5 min-h-[3.9375rem] text-[#777]">
+        <p
+          className={`mt-2 text-[var(--text)] ${
+            featured ? "line-clamp-3 text-base" : "line-clamp-2 text-sm"
+          }`}
+        >
           {data.description}
         </p>
-        <span className="text-[0.6875rem] text-[#b9b9b9]">
+        <span className="mt-auto pt-3 text-xs text-[var(--text-muted)]">
           {data.author} – {data.date}
         </span>
       </div>
