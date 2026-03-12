@@ -25,14 +25,14 @@ export default function About({ title, messages }: AboutProps) {
   return (
     <section
       id="about"
-      className="w-full bg-white pt-[3.75rem]"
+      className="w-full bg-[var(--surface)] pt-12"
       style={{ fontFamily: "Montserrat, sans-serif" }}
     >
-      <div className="flex flex-col justify-center md:flex-row md:items-center md:justify-start">
+      <div className="flex flex-col justify-center md:flex-row md:items-center md:justify-start md:gap-8">
         <div
-          className="h-auto w-full max-w-[25rem] shrink-0 overflow-hidden rounded-[0.375rem] transition-[transform] duration-1000 ease-in lg:mr-5 lg:max-w-full lg:w-[43.75rem]"
+          className="h-auto w-full max-w-[25rem] shrink-0 overflow-hidden rounded-xl transition-[transform] duration-1000 ease-out lg:max-w-full lg:w-[43.75rem]"
           style={{
-            transform: animate ? "translateX(0)" : "translateX(-1000px)",
+            transform: animate ? "translateX(0)" : "translateX(-62.5rem)",
           }}
         >
           <Image
@@ -45,17 +45,17 @@ export default function About({ title, messages }: AboutProps) {
         </div>
 
         <div
-          className="px-[0.9375rem] py-[1.875rem] transition-opacity duration-1000 ease-in"
+          className="px-4 py-8 transition-opacity duration-1000 ease-out md:py-12"
           style={{ opacity: animate ? 1 : 0 }}
         >
-          <h2 className="mb-[1.875rem] font-medium text-[#333] text-[1.4375rem] lg:text-[2rem]">
+          <h2 className="mb-6 font-semibold text-[var(--text-title)] text-xl lg:text-2xl">
             {title}
           </h2>
           <div className="lg:max-w-[43.75rem]">
             {messages.map((msg) => (
               <p
                 key={msg.slice(0, 30)}
-                className="mb-[0.9375rem] text-[#777] text-[0.8125rem] leading-6 lg:text-[1rem]"
+                className="mb-4 text-[var(--text)] text-sm leading-relaxed lg:text-base"
               >
                 {msg}
               </p>

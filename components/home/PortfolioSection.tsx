@@ -28,10 +28,10 @@ export default function PortfolioSection({
   tip,
 }: PortfolioSectionProps) {
   return (
-    <section id="portfolio" className="relative overflow-hidden bg-white">
+    <section id="portfolio" className="relative overflow-hidden bg-[var(--surface)]">
       <div className="container-portfolio">
         <SectionTitle title={title} description={description} variant="light" />
-        <div className="flex flex-wrap justify-around pb-[3.125rem]">
+        <div className="flex flex-wrap justify-center gap-4 pb-12">
           {projects.map((project) => (
             <PortfolioCard
               key={project.title}
