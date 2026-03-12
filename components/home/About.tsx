@@ -36,7 +36,7 @@ export default function About({ title, messages }: AboutProps) {
           }}
         >
           <Image
-            src="/dev.png"
+            src="/dev4.png"
             alt="Dan Garcia - Dev"
             width={700}
             height={700}
