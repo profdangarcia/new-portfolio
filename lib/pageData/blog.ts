@@ -1,7 +1,7 @@
 export default {
   pt: {
     seo: {
-      title: "Blog | Dan Garcia",
+      title: "Blog",
       description:
         "Café com leitura. Artigos sobre React, Next.js, Node.js, front-end e open source no blog de Dan Garcia. Dicas, tutoriais e experiências em desenvolvimento.",
       author: "Dan Garcia",
@@ -15,7 +15,7 @@ export default {
   },
   en: {
     seo: {
-      title: "Blog | Dan Garcia",
+      title: "Blog",
       description:
         "Coffee with reading. Articles on React, Next.js, Node.js, front-end and open source on Dan Garcia's blog. Tips, tutorials and dev experiences.",
       author: "Dan Garcia",
