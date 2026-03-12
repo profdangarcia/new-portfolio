@@ -13,31 +13,44 @@ export default function Banner({ lines }: BannerProps) {
   lines.forEach((line, i) => {
     steps.push(line, i === 0 ? 3000 : 1500);
   });
-  steps.push(lines[0], 3000); // restart first for loop feel
+  steps.push(lines[0], 3000);
 
   return (
     <section
       id="banner"
-      className="flex min-h-screen flex-col items-center justify-center bg-black bg-cover bg-center bg-no-repeat px-4 text-white"
+      className="relative flex min-h-screen flex-col items-center justify-center bg-black bg-cover bg-center bg-no-repeat px-4 text-white"
       style={{ backgroundImage: "url('/banner-bg.png')" }}
     >
-      <div className="mb-5 text-center font-mono text-[2rem] font-bold md:mb-6 md:text-[4.6875rem]" style={{ fontFamily: 'Montserrat, serif', textShadow: '0.0625rem 0.0625rem rgba(0,0,0,0.4)' }}>
-        <TypeAnimation
-          key={lines.join("|")}
-          sequence={steps}
-          wrapper="p"
-          repeat={Infinity}
-          cursor={true}
-        />
+      {/* Overlay gradient for readability and modern look */}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60"
+        aria-hidden
+      />
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center">
+        <div
+          className="mb-5 text-center font-mono text-[2rem] font-bold md:mb-6 md:text-[4.6875rem]"
+          style={{
+            fontFamily: "Montserrat, serif",
+            textShadow: "0 0.125rem 0.75rem rgba(0,0,0,0.5), 0 0 2.5rem rgba(0,0,0,0.3)",
+          }}
+        >
+          <TypeAnimation
+            key={lines.join("|")}
+            sequence={steps}
+            wrapper="p"
+            repeat={Infinity}
+            cursor={true}
+          />
+        </div>
+        <SocialLinks isBanner />
+        <a
+          href="#about"
+          className="btn-interact focus-ring mt-24 flex h-20 items-end rounded-full border-2 border-white/60 bg-white/5 px-4 pb-2 text-2xl text-white backdrop-blur-sm transition-all hover:border-white hover:bg-white/10 md:mt-32 md:text-3xl"
+          aria-label="Scroll to about"
+        >
+          <ChevronDown className="animate-bounce" style={{ fontSize: "inherit" }} />
+        </a>
       </div>
-      <SocialLinks isBanner />
-      <a
-        href="#about"
-        className="mt-24 flex h-[7.5rem] items-end text-[1.5rem] text-white transition-opacity hover:opacity-80 md:mt-32 md:text-[2.5rem]"
-        aria-label="Scroll to about"
-      >
-        <ChevronDown className="animate-bounce" style={{ fontSize: 'inherit' }} />
-      </a>
     </section>
   );
 }

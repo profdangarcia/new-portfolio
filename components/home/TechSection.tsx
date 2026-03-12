@@ -24,31 +24,31 @@ const iconMap = {
 
 export default function TechSection({ techs }: TechSectionProps) {
   return (
-    <section className="bg-[#f5f5f5] py-[2.8125rem]">
+    <section className="bg-[var(--background)] py-12">
       <div className="container-portfolio">
-        <div className="flex flex-col items-center justify-center lg:flex-row lg:justify-between">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {techs.map((tech) => {
             const Icon = iconMap[tech.icon as keyof typeof iconMap] ?? Monitor;
             return (
               <div
                 key={tech.title}
-                className="flex flex-col items-center justify-center py-5 text-center lg:h-[11.25rem] lg:justify-between lg:py-0"
+                className="flex flex-col items-center rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 text-center shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-md)]"
               >
-                <Icon
-                  className="size-[2.8125rem] shrink-0 text-[#333]"
-                  strokeWidth={1.5}
-                />
-                <div className="lg:h-[9.375rem]">
-                  <h3
-                    className="my-[0.9375rem] font-normal tracking-[0.0625rem] text-[#333] text-[0.8125rem] lg:text-[0.9375rem]"
-                    style={{ fontFamily: "Montserrat, sans-serif" }}
-                  >
-                    {tech.title}
-                  </h3>
-                  <p className="max-w-[25rem] text-[#777] text-[0.8125rem] leading-5 lg:max-w-[14.375rem] lg:text-[0.9375rem]">
-                    {tech.description}
-                  </p>
+                <div className="mb-4 flex size-14 items-center justify-center rounded-xl bg-[var(--primary-light)]">
+                  <Icon
+                    className="size-8 text-[var(--primary)]"
+                    strokeWidth={1.5}
+                  />
                 </div>
+                <h3
+                  className="mb-2 font-semibold tracking-wide text-[var(--text-title)] text-sm lg:text-base"
+                  style={{ fontFamily: "Montserrat, sans-serif" }}
+                >
+                  {tech.title}
+                </h3>
+                <p className="max-w-[18rem] text-[var(--text)] text-sm leading-relaxed">
+                  {tech.description}
+                </p>
               </div>
             );
           })}

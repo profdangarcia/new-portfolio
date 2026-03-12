@@ -18,7 +18,7 @@ export default function Contact({ title, description, form }: ContactProps) {
   return (
     <section
       id="contact"
-      className="bg-[#f5f5f5] pb-[4.375rem] pt-[1.875rem]"
+      className="bg-[var(--background)] pb-16 pt-10"
     >
       <div className="container-portfolio">
         <SectionTitle title={title} description={description} variant="light" />

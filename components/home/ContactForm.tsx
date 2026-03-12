@@ -74,65 +74,57 @@ export default function ContactForm({ data }: ContactFormProps) {
           ? data.success
           : data.error;
 
-  const buttonBg =
-    status === "success"
-      ? "#25D366"
-      : status === "error"
-        ? "#db4437"
-        : status === "loading"
-          ? "#000"
-          : "transparent";
+  const isPrimaryButton = status === "form";
+  const errorBg = "var(--error)";
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mx-auto mt-[0.9375rem] flex max-w-[50rem] flex-wrap items-center justify-center"
+      className="mx-auto mt-6 flex max-w-[50rem] flex-wrap items-center justify-center gap-x-8"
     >
-      <div className="flex w-full flex-col items-center md:max-w-[46%] md:mr-[8%]">
+      <div className="flex w-full flex-col md:max-w-[46%]">
         <input
           id="name"
           type="text"
           placeholder={data.name.placeholder}
           disabled={status === "loading"}
           {...register("name")}
-          className={`mt-[0.9375rem] w-full rounded-[0.25rem] border-b bg-transparent px-[0.9375rem] font-sans text-[#777] transition-all duration-500 focus:outline-none lg:text-[0.875rem] ${
+          className={`focus-ring mt-4 w-full rounded-lg border bg-[var(--surface)] px-4 py-3 text-[var(--text)] transition-colors placeholder:text-[var(--text-muted)] ${
             errors.name
-              ? "border border-[#ff3d3d] border-b-[#ff3d3d] focus:border-[#ff3d3d]"
-              : "border-0 border-b border-[#dfdfdf] focus:border focus:border-[#333] focus:border-b-[#333]"
+              ? "border-[var(--error)] focus:border-[var(--error)] focus:outline-[var(--error)]"
+              : "border-[var(--border)] focus:border-[var(--primary)] focus:outline-[var(--primary)]"
           }`}
-          style={{ height: "2.8125rem", fontSize: "0.8125rem" }}
+          style={{ fontSize: "0.9375rem" }}
         />
-        <div className="relative mt-[0.3125rem] flex h-[1.5625rem] w-full items-center justify-center overflow-hidden">
+        <div className="relative mt-1 flex h-6 w-full items-center overflow-hidden">
           <span
-            className={`absolute text-center text-[#ff3d3d] transition-all duration-500 ease-in-out ${
-              errors.name ? "translate-y-0" : "translate-y-2.5"
+            className={`absolute text-sm text-[var(--error)] transition-transform duration-200 ${
+              errors.name ? "translate-y-0" : "translate-y-4"
             }`}
-            style={{ fontSize: "0.8125rem" }}
           >
             {errors.name?.message ?? ""}
           </span>
         </div>
       </div>
-      <div className="flex w-full flex-col items-center md:max-w-[46%]">
+      <div className="flex w-full flex-col md:max-w-[46%]">
         <input
           id="email"
           type="email"
           placeholder={data.email.placeholder}
           disabled={status === "loading"}
           {...register("email")}
-          className={`mt-[0.9375rem] w-full rounded-[0.25rem] border-b bg-transparent px-[0.9375rem] font-sans text-[#777] transition-all duration-500 focus:outline-none lg:text-[0.875rem] ${
+          className={`focus-ring mt-4 w-full rounded-lg border bg-[var(--surface)] px-4 py-3 text-[var(--text)] transition-colors placeholder:text-[var(--text-muted)] ${
             errors.email
-              ? "border border-[#ff3d3d] border-b-[#ff3d3d] focus:border-[#ff3d3d]"
-              : "border-0 border-b border-[#dfdfdf] focus:border focus:border-[#333] focus:border-b-[#333]"
+              ? "border-[var(--error)] focus:border-[var(--error)]"
+              : "border-[var(--border)] focus:border-[var(--primary)] focus:outline-[var(--primary)]"
           }`}
-          style={{ height: "2.8125rem", fontSize: "0.8125rem" }}
+          style={{ fontSize: "0.9375rem" }}
         />
-        <div className="relative mt-[0.3125rem] flex h-[1.5625rem] w-full items-center justify-center overflow-hidden">
+        <div className="relative mt-1 flex h-6 w-full items-center overflow-hidden">
           <span
-            className={`absolute text-center text-[#ff3d3d] transition-all duration-500 ease-in-out ${
-              errors.email ? "translate-y-0" : "translate-y-2.5"
+            className={`absolute text-sm text-[var(--error)] transition-transform duration-200 ${
+              errors.email ? "translate-y-0" : "translate-y-4"
             }`}
-            style={{ fontSize: "0.8125rem" }}
           >
             {errors.email?.message ?? ""}
           </span>
@@ -145,19 +137,18 @@ export default function ContactForm({ data }: ContactFormProps) {
           placeholder={data.message.placeholder}
           disabled={status === "loading"}
           {...register("message")}
-          className={`mt-[0.9375rem] w-full resize-y rounded-[0.25rem] border-b bg-transparent pt-[0.9375rem] pl-[0.9375rem] font-sans text-[#777] transition-all duration-500 focus:outline-none lg:text-[0.875rem] ${
+          className={`focus-ring mt-4 w-full resize-y rounded-lg border bg-[var(--surface)] px-4 py-3 pt-4 text-[var(--text)] transition-colors placeholder:text-[var(--text-muted)] ${
             errors.message
-              ? "border border-[#ff3d3d] border-b-[#ff3d3d] focus:border-[#ff3d3d]"
-              : "border-0 border-b border-[#dfdfdf] focus:border focus:border-[#333] focus:border-b-[#333]"
+              ? "border-[var(--error)] focus:border-[var(--error)]"
+              : "border-[var(--border)] focus:border-[var(--primary)] focus:outline-[var(--primary)]"
           }`}
-          style={{ fontSize: "0.8125rem" }}
+          style={{ fontSize: "0.9375rem" }}
         />
-        <div className="relative mt-[0.3125rem] flex h-[1.5625rem] w-full items-center justify-center overflow-hidden">
+        <div className="relative mt-1 flex h-6 w-full items-center overflow-hidden">
           <span
-            className={`absolute text-center text-[#ff3d3d] transition-all duration-500 ease-in-out ${
-              errors.message ? "translate-y-0" : "translate-y-2.5"
+            className={`absolute text-sm text-[var(--error)] transition-transform duration-200 ${
+              errors.message ? "translate-y-0" : "translate-y-4"
             }`}
-            style={{ fontSize: "0.8125rem" }}
           >
             {errors.message?.message ?? ""}
           </span>
@@ -166,25 +157,26 @@ export default function ContactForm({ data }: ContactFormProps) {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="relative mt-[1.875rem] flex h-10 w-[13.4375rem] items-center justify-center rounded-[3.125rem] font-semibold transition-all duration-300 ease-in-out hover:text-white focus:outline-none"
+        className="btn-interact focus-ring relative mt-8 flex h-12 min-w-[13.4375rem] items-center justify-center rounded-full px-8 font-semibold text-white transition-all duration-300 focus:outline-none disabled:pointer-events-none"
         style={{
           fontFamily: "Montserrat, sans-serif",
-          color: status === "form" ? "#333" : "#fff",
-          background: buttonBg,
-          border: "2px solid rgb(0, 0, 0)",
+          background:
+            status === "form"
+              ? "var(--primary)"
+              : status === "success"
+                ? "#25D366"
+                : status === "error"
+                  ? errorBg
+                  : "var(--text-title)",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.color = "#fff";
-          e.currentTarget.style.background =
-            status === "form" ? "#000" : buttonBg;
+          if (status === "form") {
+            e.currentTarget.style.background = "var(--primary-hover)";
+          }
         }}
         onMouseLeave={(e) => {
           if (status === "form") {
-            e.currentTarget.style.background = "transparent";
-            e.currentTarget.style.color = "#333";
-          } else {
-            e.currentTarget.style.color = "#fff";
-            e.currentTarget.style.background = buttonBg;
+            e.currentTarget.style.background = "var(--primary)";
           }
         }}
       >
