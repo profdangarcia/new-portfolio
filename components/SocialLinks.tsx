@@ -21,15 +21,18 @@ interface SocialLinksProps {
 }
 
 export default function SocialLinks({ isBanner = true }: SocialLinksProps) {
+  const linkClass = isBanner
+    ? "text-white"
+    : "text-[var(--footer-text)] hover:text-white";
   return (
-    <div className="flex gap-6 text-white md:gap-8">
+    <div className={`flex gap-6 md:gap-8 ${isBanner ? "text-white" : ""}`}>
       {LINKS.map(({ href, Icon }) => (
         <a
           key={href}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-base transition-opacity hover:opacity-70 md:text-2xl [&_svg]:size-6 md:[&_svg]:size-8"
+          className={`focus-ring text-base transition-opacity hover:opacity-80 md:text-2xl [&_svg]:size-6 md:[&_svg]:size-8 ${!isBanner ? linkClass : ""}`}
           aria-label={href}
         >
           <Icon />
@@ -40,7 +43,7 @@ export default function SocialLinks({ isBanner = true }: SocialLinksProps) {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-base transition-opacity hover:opacity-70 md:text-2xl [&_svg]:size-6 md:[&_svg]:size-8"
+          className={`focus-ring text-base transition-opacity hover:opacity-80 md:text-2xl [&_svg]:size-6 md:[&_svg]:size-8 ${linkClass}`}
           aria-label="WhatsApp"
         >
           <MessageCircle />

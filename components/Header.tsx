@@ -93,9 +93,16 @@ export default function Header({ locale }: HeaderProps) {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  const headerBg =
+    pathname === "/" && isVisible
+      ? "bg-[var(--surface)]/80 backdrop-blur-md shadow-[var(--shadow-md)]"
+      : pathname === "/"
+        ? "bg-transparent"
+        : "bg-[var(--surface)] shadow-[var(--shadow-sm)]";
+
   return (
     <header
-      className={`left-0 right-0 top-0 z-10 min-h-[5.75rem] w-full overflow-hidden bg-white shadow-[_-5px_10px_12px_-10px_rgba(201,201,201,0.67)] transition-all duration-500 ease-in-out ${
+      className={`left-0 right-0 top-0 z-10 min-h-[5.75rem] w-full overflow-hidden transition-all duration-500 ease-in-out ${headerBg} ${
         pathname === "/" ? "fixed" : "relative"
       } ${
         isVisible ? "translate-y-0" : pathname === "/" ? "-translate-y-[6.375rem]" : "translate-y-0"
@@ -110,17 +117,17 @@ export default function Header({ locale }: HeaderProps) {
           <div className="flex h-[5.75rem] items-center justify-between">
             <Link
               href="/"
-              className="min-w-[6.875rem] shrink-0 font-display text-[2.25rem] font-normal text-[#000] underline decoration-[var(--logo-underline)] decoration-2 underline-offset-2 transition-all duration-200 hover:text-[2.375rem] md:text-[3rem] md:hover:text-[3.125rem]"
+              className="focus-ring min-w-[6.875rem] shrink-0 font-display text-[2.25rem] font-normal text-[var(--foreground)] underline decoration-[var(--logo-underline)] decoration-2 underline-offset-2 transition-all duration-200 hover:text-[2.375rem] md:text-[3rem] md:hover:text-[3.125rem]"
             >
               DAN GARCIA
             </Link>
 
             {!isMobile && (
               <ul
-                className="flex list-none items-center justify-end gap-[0.625rem]"
+                className="flex list-none items-center justify-end gap-2"
                 style={{ marginTop: 0 }}
               >
-                {links.map((link, index) => {
+                {links.map((link) => {
                   const linkWithId = link as { url: string; name: string; id?: string };
                   const inFocus = isLinkInFocus(linkWithId);
 
@@ -132,8 +139,10 @@ export default function Header({ locale }: HeaderProps) {
                     >
                       <Link
                         href={link.url}
-                        className={`block no-underline transition-colors duration-200 ease-in hover:text-[#666] ${
-                          inFocus ? "text-[#666] text-[1rem]" : "text-[#000] text-inherit"
+                        className={`focus-ring link-underline block no-underline transition-colors duration-200 ${
+                          inFocus
+                            ? "text-[var(--primary)] font-semibold"
+                            : "text-[var(--foreground)] hover:text-[var(--primary)]"
                         }`}
                         style={{
                           height: "2.8125rem",
@@ -150,7 +159,7 @@ export default function Header({ locale }: HeaderProps) {
 
             <button
               type="button"
-              className="shrink-0 text-[#666] lg:hidden"
+              className="focus-ring shrink-0 text-[var(--text)] lg:hidden"
               style={{ fontSize: "1.4375rem" }}
               onClick={() => setShowNav((prev) => !prev)}
               aria-label="Menu"
@@ -176,7 +185,7 @@ export default function Header({ locale }: HeaderProps) {
                   return (
                     <li
                       key={link.name}
-                      className="w-full border-t border-[#f7f7f7] text-center"
+                      className="w-full border-t border-[var(--border)] text-center"
                       style={{
                         height: "2.8125rem",
                         lineHeight: "2.8125rem",
@@ -184,8 +193,10 @@ export default function Header({ locale }: HeaderProps) {
                     >
                       <Link
                         href={link.url}
-                        className={`block no-underline transition-colors duration-200 ease-in hover:text-[#666] hover:text-[1rem] ${
-                          inFocus ? "text-[#666] text-[1rem]" : "text-[#000] text-inherit"
+                        className={`focus-ring block no-underline transition-colors duration-200 ${
+                          inFocus
+                            ? "text-[var(--primary)] font-semibold"
+                            : "text-[var(--foreground)] hover:text-[var(--primary)]"
                         }`}
                         onClick={() => setShowNav(false)}
                       >
