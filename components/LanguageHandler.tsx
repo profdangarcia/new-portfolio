@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import type { Locale } from "@/app/actions/locale";
 import { setLocaleCookie } from "@/app/actions/locale";
 import { mapPostSlug } from "@/lib/postSlugMap";
+import ThemeToggle from "@/components/ThemeToggle";
 
 interface LanguageHandlerProps {
   locale: Locale;
@@ -59,13 +60,14 @@ export default function LanguageHandler({ locale }: LanguageHandlerProps) {
   }
 
   return (
-    <div className="relative flex h-10 w-full items-center justify-end bg-[#f7f7f7]">
-      <div className="container-portfolio flex h-full items-center justify-end">
+    <div className="relative flex h-10 w-full items-center justify-end border-b border-[var(--border)] bg-[var(--surface)]">
+      <div className="container-portfolio flex h-full items-center justify-end gap-3">
+        <ThemeToggle />
         <div className="flex items-center gap-2.5">
           <button
             type="button"
             onClick={() => handleSetLocale("en")}
-            className="rounded p-0.5 transition-opacity duration-200 hover:opacity-80"
+            className="focus-ring rounded p-0.5 transition-opacity duration-200 hover:opacity-80"
             aria-pressed={locale === "en"}
             aria-label="English"
           >
@@ -82,7 +84,7 @@ export default function LanguageHandler({ locale }: LanguageHandlerProps) {
           <button
             type="button"
             onClick={() => handleSetLocale("pt")}
-            className="rounded p-0.5 transition-opacity duration-200 hover:opacity-80"
+            className="focus-ring rounded p-0.5 transition-opacity duration-200 hover:opacity-80"
             aria-pressed={locale === "pt"}
             aria-label="Português"
           >

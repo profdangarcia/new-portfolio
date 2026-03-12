@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Poppins, Montserrat, Six_Caps } from "next/font/google";
 import { getLocaleCookie } from "@/app/actions/locale";
+import { getThemeCookie } from "@/app/actions/theme";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LanguageHandler from "@/components/LanguageHandler";
 import CoffeeLoading from "@/components/CoffeeLoading";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -52,17 +54,37 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const locale = await getLocaleCookie();
+  const theme = await getThemeCookie();
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+(function() {
+  var c = document.cookie.match(/NEXT_THEME=([^;]+)/);
+  var t = c ? c[1] : 'system';
+  if (t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+            `.trim(),
+          }}
+        />
+      </head>
       <body
         className={`${poppins.variable} ${montserrat.variable} ${sixCaps.variable} antialiased`}
       >
-        <CoffeeLoading />
-        <LanguageHandler locale={locale} />
-        <Header locale={locale} />
-        <main className="min-h-screen">{children}</main>
-        <Footer locale={locale} />
+        <ThemeProvider initialTheme={theme}>
+          <CoffeeLoading />
+          <LanguageHandler locale={locale} />
+          <Header locale={locale} />
+          <main className="min-h-screen">{children}</main>
+          <Footer locale={locale} />
+        </ThemeProvider>
       </body>
     </html>
   );
