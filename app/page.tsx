@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: data.seo.title,
       description: data.seo.description,
       url: baseUrl + "/",
-      images: [{ url: baseUrl + "/dev.png" }],
+      images: [{ url: baseUrl + "/default-thumbnail.png" }],
     },
     twitter: {
       title: data.seo.title,
