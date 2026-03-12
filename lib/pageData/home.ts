@@ -5,7 +5,7 @@ export default {
       description:
         "Um desenvolvedor front-end que ama a tecnologia e novos desafios. Portfólio de Dan Garcia: React, Next.js, Node.js e projetos open source. Entre em contato!",
       author: "Dan Garcia",
-      publishedTime: "2026-03-01",
+      publishedTime: "2026-03-01T00:00:00.000Z",
     },
     banner: [
       "Seja bem-vindo!",
@@ -129,7 +129,7 @@ export default {
       description:
         "A front-end developer who loves technology and new challenges. Dan Garcia's portfolio: React, Next.js, Node.js and open source projects. Get in touch!",
       author: "Dan Garcia",
-      publishedTime: "2026-03-01",
+      publishedTime: "2026-03-01T00:00:00.000Z",
     },
     banner: [
       "Be Welcome!",

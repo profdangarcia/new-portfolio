@@ -18,6 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: data.description,
       url: baseUrl + (data.canonical ?? "/blog"),
       images: [{ url: baseUrl + "/blog-thumbnail.png" }],
+      type: "article",
       publishedTime: data.publishedTime,
     },
     twitter: {

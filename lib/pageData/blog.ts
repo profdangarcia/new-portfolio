@@ -5,7 +5,7 @@ export default {
       description:
         "Café com leitura. Artigos sobre React, Next.js, Node.js, front-end e open source no blog de Dan Garcia. Dicas, tutoriais e experiências em desenvolvimento.",
       author: "Dan Garcia",
-      publishedTime: "2026-03-12",
+      publishedTime: "2026-03-12T00:00:00.000Z",
       canonical: "/blog",
     },
     blog: {
@@ -19,7 +19,7 @@ export default {
       description:
         "Coffee with reading. Articles on React, Next.js, Node.js, front-end and open source on Dan Garcia's blog. Tips, tutorials and dev experiences.",
       author: "Dan Garcia",
-      publishedTime: "2026-03-12",
+      publishedTime: "2026-03-12T00:00:00.000Z",
       canonical: "/en/blog",
     },
     blog: {

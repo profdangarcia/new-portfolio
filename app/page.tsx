@@ -21,6 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: data.seo.description,
       url: baseUrl + "/",
       images: [{ url: baseUrl + "/default-thumbnail.png" }],
+      type: "article",
       publishedTime: data.seo.publishedTime,
     },
     twitter: {
