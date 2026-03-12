@@ -20,7 +20,7 @@ export default {
         { name: "About", url: "/#about", id: "#about" },
         { name: "Portfolio", url: "/#portfolio", id: "#portfolio" },
         { name: "Contact", url: "/#contact", id: "#contact" },
-        { name: "Blog", url: "/blog" },
+        { name: "Blog", url: "/en/blog" },
       ],
     },
     footer: {

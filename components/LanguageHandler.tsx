@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import type { Locale } from "@/app/actions/locale";
 import { setLocaleCookie } from "@/app/actions/locale";
+import { mapPostSlug } from "@/lib/postSlugMap";
 
 interface LanguageHandlerProps {
   locale: Locale;
@@ -11,10 +12,50 @@ interface LanguageHandlerProps {
 
 export default function LanguageHandler({ locale }: LanguageHandlerProps) {
   const router = useRouter();
+  const pathname = usePathname() || "/";
+
+  function buildBlogPath(
+    targetLocale: Locale,
+    currentPath: string,
+  ): string | null {
+    // PT blog list or post
+    if (currentPath === "/blog" || currentPath.startsWith("/blog/")) {
+      if (targetLocale === "pt") return currentPath;
+
+      if (currentPath === "/blog") return "/en/blog";
+
+      const slug = currentPath.replace("/blog/", "");
+      const mapped = mapPostSlug(slug, "pt", "en");
+      return mapped ? `/en/blog/${mapped}` : "/en/blog";
+    }
+
+    // EN blog list or post
+    if (currentPath === "/en/blog" || currentPath.startsWith("/en/blog/")) {
+      if (targetLocale === "en") return currentPath;
+
+      if (currentPath === "/en/blog") return "/blog";
+
+      const slug = currentPath.replace("/en/blog/", "");
+      const mapped = mapPostSlug(slug, "en", "pt");
+      return mapped ? `/blog/${mapped}` : "/blog";
+    }
+
+    // Outras rotas: mantém o path atual e só troca o cookie.
+    return currentPath;
+  }
 
   async function handleSetLocale(newLocale: Locale) {
+    if (newLocale === locale) return;
+
     await setLocaleCookie(newLocale);
-    router.refresh();
+
+    const nextPath = buildBlogPath(newLocale, pathname);
+
+    if (nextPath && nextPath !== pathname) {
+      router.push(nextPath);
+    } else {
+      router.refresh();
+    }
   }
 
   return (
@@ -60,3 +101,4 @@ export default function LanguageHandler({ locale }: LanguageHandlerProps) {
     </div>
   );
 }
+

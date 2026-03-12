@@ -5,9 +5,10 @@ interface BlogGridProps {
   title: string;
   description: string;
   posts: PostMeta[];
+  basePath?: string;
 }
 
-export default function BlogGrid({ title, description, posts }: BlogGridProps) {
+export default function BlogGrid({ title, description, posts, basePath = "/blog" }: BlogGridProps) {
   return (
     <section className="bg-[#f5f5f5] py-4">
       <div className="container-portfolio">
@@ -27,7 +28,7 @@ export default function BlogGrid({ title, description, posts }: BlogGridProps) {
           style={{ gridAutoRows: "minmax(min-content, max-content)" }}
         >
           {posts.map((post) => (
-            <PostItem key={post.slug} data={post} />
+            <PostItem key={post.slug} data={post} basePath={basePath} />
           ))}
         </div>
       </div>
