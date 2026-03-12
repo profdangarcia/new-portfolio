@@ -14,11 +14,11 @@ export default {
     seo: {
       title: "Blog",
       description: "Coffee with reading",
-      canonical: "/blog",
+      canonical: "/en/blog",
     },
     blog: {
       title: "BLOG 📰",
-      description: "Only available in PT-BR for now...",
+      description: "Technology and more...",
     },
   },
 } as const;

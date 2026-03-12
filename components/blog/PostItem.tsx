@@ -4,12 +4,13 @@ import type { PostMeta } from "@/types/post";
 
 interface PostItemProps {
   data: PostMeta;
+  basePath?: string;
 }
 
-export default function PostItem({ data }: PostItemProps) {
+export default function PostItem({ data, basePath = "/blog" }: PostItemProps) {
   return (
     <Link
-      href={`/blog/${data.slug}`}
+      href={`${basePath}/${data.slug}`}
       className="group flex flex-col overflow-hidden rounded-[0.25rem] border-b-[0.1875rem] border-[#333] bg-white no-underline shadow-[0_1px_2px_rgba(0,0,0,0.07),0_2px_4px_rgba(0,0,0,0.07),0_4px_8px_rgba(0,0,0,0.07),0_8px_16px_rgba(0,0,0,0.07),0_16px_32px_rgba(0,0,0,0.07),0_32px_64px_rgba(0,0,0,0.07)]"
     >
       <div className="relative h-[16.3125rem] w-full shrink-0 overflow-hidden rounded-t-[0.25rem]">
