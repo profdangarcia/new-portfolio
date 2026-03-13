@@ -29,6 +29,8 @@ export default function PostItem({ data, basePath = "/blog", featured = false }:
             featured ? "object-top" : "object-center"
           }`}
           sizes={featured ? "(max-width: 768px) 100vw, 60vw" : "(max-width: 48rem) 100vw, 50vw"}
+          priority={featured}
+          fetchPriority={featured ? "high" : "auto"}
         />
       </div>
       <div className="flex flex-1 flex-col p-4">
