@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { ChevronDown } from "lucide-react";
 import SocialLinks from "@/components/SocialLinks";
@@ -18,9 +19,18 @@ export default function Banner({ lines }: BannerProps) {
   return (
     <section
       id="banner"
-      className="relative flex min-h-screen flex-col items-center justify-center bg-black bg-cover bg-center bg-no-repeat px-4 text-white"
-      style={{ backgroundImage: "url('/banner-bg.png')" }}
+      className="relative flex min-h-screen flex-col items-center justify-center bg-black px-4 text-white"
     >
+      {/* LCP background image – high priority for faster hero paint */}
+      <Image
+        src="/banner-bg.png"
+        alt=""
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        className="pointer-events-none select-none object-cover"
+      />
       {/* Overlay gradient for readability and modern look */}
       <div
         className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60"
