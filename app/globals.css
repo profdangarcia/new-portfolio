@@ -14,7 +14,7 @@
   --foreground: #171717;
   --text-title: #1f1f1f;
   --text: #6b6b6b;
-  --text-muted: #9ca3af;
+  --text-muted: #6b7280;
   /* Borders & shadows */
   --border: #e5e7eb;
   --border-focus: var(--primary);
@@ -55,7 +55,7 @@
   --foreground: #fafafa;
   --text-title: #f4f4f5;
   --text: #a1a1aa;
-  --text-muted: #71717a;
+  --text-muted: #9ca3af;
   --border: #27272a;
   --border-focus: #8b5cf6;
   --primary: #8b5cf6;
@@ -66,7 +66,7 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.25);
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.2);
   --footer-bg: #0d0d0f;
-  --footer-text: #71717a;
+  --footer-text: #9ca3af;
 }
 
 /* System preference dark (no toggle yet) – override when data-theme is not set */
@@ -252,7 +252,7 @@ button {
 }
 #post-content p {
   margin-bottom: 1rem;
-  color: var(--text);
+  color: var(--text-title);
 }
 #post-content p + p {
   margin-top: 0.75rem;
