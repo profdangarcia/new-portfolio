@@ -252,7 +252,7 @@ button {
 }
 #post-content p {
   margin-bottom: 1rem;
-  color: var(--text);
+  color: var(--text-title);
 }
 #post-content p + p {
   margin-top: 0.75rem;

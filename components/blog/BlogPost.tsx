@@ -10,16 +10,16 @@ export default function BlogPost({ data }: BlogPostProps) {
   const { title, image, content, author, date } = data;
 
   return (
-    <main className="min-h-[70vh] bg-[#f5f5f5] py-[1.875rem]">
+    <main className="min-h-[70vh] bg-[var(--background)] py-[1.875rem]">
       <div className="container-portfolio">
-        <article className="mx-auto flex max-w-3xl flex-col text-[0.875rem] md:text-[1rem]">
+        <article className="mx-auto flex max-w-3xl flex-col text-[0.9375rem] md:text-[1.0625rem]">
           <h1
-            className="font-bold text-[#333] text-[1.375rem] md:text-[1.875rem]"
+            className="font-bold text-[var(--text-title)] text-[1.375rem] md:text-[1.875rem]"
             style={{ fontFamily: "Montserrat, sans-serif" }}
           >
             {title}
           </h1>
-          <p className="mt-0 text-[0.6875rem] text-[#b7b7b7] md:text-[0.75rem]">
+          <p className="mt-1 text-xs font-medium text-[var(--text-title)] md:text-sm">
             {author} – {date}
           </p>
           {image && (
