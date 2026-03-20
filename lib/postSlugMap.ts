@@ -21,6 +21,10 @@ export const POST_SLUGS: SlugPair[] = [
     pt: "financy-desktop-electron",
     en: "financy-desktop-app-with-electron",
   },
+  {
+    pt: "vite-8-disponivel",
+    en: "vite-8-is-here",
+  },
 ];
 
 const byLocale: Record<Locale, Record<string, string>> = {
