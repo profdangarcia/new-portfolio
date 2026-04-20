@@ -25,6 +25,10 @@ export const POST_SLUGS: SlugPair[] = [
     pt: "vite-8-disponivel",
     en: "vite-8-is-here",
   },
+  {
+    pt: "react-17-para-19-na-pratica",
+    en: "react-17-to-19-in-practice",
+  },
 ];
 
 const byLocale: Record<Locale, Record<string, string>> = {
